@@ -1,0 +1,14 @@
+C:\Users\N0RB1C1\source\repos\Zarodoga\Zarodoga\bin\Debug\Zarodoga.exe.config
+C:\Users\N0RB1C1\source\repos\Zarodoga\Zarodoga\bin\Debug\Zarodoga.exe
+C:\Users\N0RB1C1\source\repos\Zarodoga\Zarodoga\bin\Debug\Zarodoga.pdb
+C:\Users\N0RB1C1\source\repos\Zarodoga\Zarodoga\bin\Debug\MySql.Data.dll
+C:\Users\N0RB1C1\source\repos\Zarodoga\Zarodoga\bin\Debug\Google.Protobuf.dll
+C:\Users\N0RB1C1\source\repos\Zarodoga\Zarodoga\bin\Debug\MySql.Data.xml
+C:\Users\N0RB1C1\source\repos\Zarodoga\Zarodoga\obj\Debug\Zarodoga.csprojAssemblyReference.cache
+C:\Users\N0RB1C1\source\repos\Zarodoga\Zarodoga\obj\Debug\Zarodoga.Properties.Resources.resources
+C:\Users\N0RB1C1\source\repos\Zarodoga\Zarodoga\obj\Debug\Zarodoga.csproj.GenerateResource.cache
+C:\Users\N0RB1C1\source\repos\Zarodoga\Zarodoga\obj\Debug\Zarodoga.csproj.CoreCompileInputs.cache
+C:\Users\N0RB1C1\source\repos\Zarodoga\Zarodoga\obj\Debug\Zarodoga.csproj.CopyComplete
+C:\Users\N0RB1C1\source\repos\Zarodoga\Zarodoga\obj\Debug\Zarodoga.exe
+C:\Users\N0RB1C1\source\repos\Zarodoga\Zarodoga\obj\Debug\Zarodoga.pdb
+C:\Users\N0RB1C1\source\repos\Zarodoga\Zarodoga\obj\Debug\Zarodoga.Form_1.resources
