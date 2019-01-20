@@ -54,5 +54,10 @@ namespace Zarodoga
                 MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }

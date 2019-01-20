@@ -27,6 +27,7 @@ namespace Zarodoga
         private static MySqlConnection kapcsolodas = new MySqlConnection(homeServerWithin);
         private static MySqlCommand command;
 
+
         // Adatbázis létrehozása (Players / Player)
         public static void Adatbazisletrehozas()
         {
@@ -48,11 +49,12 @@ namespace Zarodoga
             catch (Exception e) { Console.WriteLine(e); }
         }
 
+
         // Insert into (Username , Password)
-        public static void InsertInto(string user,string pass)
+        public static void InsertInto(string user, string pass)
         {
             string name = user;
-            string password =pass;
+            string password = pass;
 
             try
             {
@@ -68,29 +70,65 @@ namespace Zarodoga
                 kapcsolodas.Close();
             }
             catch (Exception e) { Console.WriteLine(e); }
-                
+
         }
 
-        // Select (Username & Password)
-        public static int Select(string username, string password)
+        // Select username for register ()
+        public static int RegisterCheck(string username)
+        {
+            string i = null;
+            try
+            {
+                kapcsolodas.Open();
+                command = kapcsolodas.CreateCommand();
+                string sql = "SELECT username FROM player WHERE username = " +
+                "(@param1)";
+                command = new MySqlCommand(sql, kapcsolodas);
+                command.Parameters.Add("@param1", MySqlDbType.Text).Value = username;
+                command.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(command);
+                da.Fill(dt);
+                i = (dt.Rows.Count.ToString());
+            }
+            catch (Exception e) { Console.WriteLine(e); }
+            if (i.Equals(null))
+            {
+                kapcsolodas.Close();
+                return 1;
+            }
+            else
+            {
+                kapcsolodas.Close();
+                return 0;
+            }
+
+
+        }
+
+
+        // Select id for login (Username & Password)
+        public static int Select2(string username, string password)
         {
             int i = 0;
-            MySqlConnection kapcsolodas = new MySqlConnection(homeServerWithin);
-            MySqlCommand parancs = kapcsolodas.CreateCommand();
-            kapcsolodas.Open();
-            string sql = "SELECT * FROM jatekos WHERE user_name = " +
-            "(@param1)" + 
-            "and user_password = " +
-            "(@param2)";
-            MySqlCommand cmd = new MySqlCommand(sql, kapcsolodas);
-            cmd.Parameters.Add("@param1", MySqlDbType.Text).Value = username;
-            cmd.Parameters.Add("@param2", MySqlDbType.Text).Value = password;
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-            da.Fill(dt);
-            i = Convert.ToInt32(dt.Rows.Count.ToString());
-
+            try
+            {
+                kapcsolodas.Open();
+                command = kapcsolodas.CreateCommand();
+                string sql = "SELECT id FROM player WHERE username = " +
+                "(@param1)" +
+                "and password = " +
+                "(@param2)";
+                command = new MySqlCommand(sql, kapcsolodas);
+                command.Parameters.Add("@param1", MySqlDbType.Text).Value = username;
+                command.Parameters.Add("@param2", MySqlDbType.Text).Value = password;
+                command.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(command);
+                da.Fill(dt);
+                i = Convert.ToInt32(dt.Rows.Count.ToString());
+            }
+            catch (Exception e) { Console.WriteLine(e); }
             if (i == 0)
             {
                 kapcsolodas.Close();
@@ -101,7 +139,7 @@ namespace Zarodoga
                 kapcsolodas.Close();
                 return 1;
             }
+
+
         }
 
-    }
-}
