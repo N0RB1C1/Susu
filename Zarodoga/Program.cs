@@ -16,7 +16,7 @@ namespace Zarodoga
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_1());
+            Application.Run(new Login());
         }
     }
 }

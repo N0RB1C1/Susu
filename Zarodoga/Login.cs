@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Zarodoga
 {
-    public partial class Form_1 : Form
+    public partial class Login : Form
     {
-        public Form_1()
+        public Login()
         {
             InitializeComponent();
         }
@@ -39,7 +39,7 @@ namespace Zarodoga
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Login_Button_Click(object sender, EventArgs e)
         {
             if (Adatbazis.Select(User_box.Text, Pass_box.Text) == 0)
             {
@@ -49,9 +49,9 @@ namespace Zarodoga
             }
             else
             {
-                string message = "Ügyes vagy!";
-                string caption = "Form Closing";
-                MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Menu form = new Menu();
+                this.Hide();
+                form.ShowDialog();
             }
         }
 

@@ -108,7 +108,7 @@ namespace Zarodoga
 
 
         // Select id for login (Username & Password)
-        public static int Select2(string username, string password)
+        public static int Select(string username, string password)
         {
             int i = 0;
             try
@@ -142,4 +142,5 @@ namespace Zarodoga
 
 
         }
-
+    }
+}

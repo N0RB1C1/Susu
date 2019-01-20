@@ -1,6 +1,6 @@
 ﻿namespace Zarodoga
 {
-    partial class Form_1
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -33,14 +33,14 @@
             this.Pass_box = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Login_button = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // Register_Button
             // 
             this.Register_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Register_Button.Location = new System.Drawing.Point(226, 166);
+            this.Register_Button.Location = new System.Drawing.Point(124, 144);
             this.Register_Button.Name = "Register_Button";
             this.Register_Button.Size = new System.Drawing.Size(150, 25);
             this.Register_Button.TabIndex = 0;
@@ -50,14 +50,14 @@
             // 
             // User_box
             // 
-            this.User_box.Location = new System.Drawing.Point(226, 84);
+            this.User_box.Location = new System.Drawing.Point(124, 62);
             this.User_box.Name = "User_box";
             this.User_box.Size = new System.Drawing.Size(150, 20);
             this.User_box.TabIndex = 1;
             // 
             // Pass_box
             // 
-            this.Pass_box.Location = new System.Drawing.Point(226, 140);
+            this.Pass_box.Location = new System.Drawing.Point(124, 118);
             this.Pass_box.Name = "Pass_box";
             this.Pass_box.Size = new System.Drawing.Size(150, 20);
             this.Pass_box.TabIndex = 1;
@@ -65,7 +65,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(226, 51);
+            this.label1.Location = new System.Drawing.Point(124, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 30);
             this.label1.TabIndex = 2;
@@ -75,34 +75,34 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(226, 107);
+            this.label2.Location = new System.Drawing.Point(124, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(150, 30);
             this.label2.TabIndex = 2;
             this.label2.Text = "Jelszó";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // Login_button
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(226, 197);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Bejelentkezés";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Login_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Login_button.Location = new System.Drawing.Point(124, 175);
+            this.Login_button.Name = "Login_button";
+            this.Login_button.Size = new System.Drawing.Size(150, 23);
+            this.Login_button.TabIndex = 3;
+            this.Login_button.Text = "Bejelentkezés";
+            this.Login_button.UseVisualStyleBackColor = true;
+            this.Login_button.Click += new System.EventHandler(this.Login_Button_Click);
             // 
             // saveFileDialog1
             // 
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
-            // Form_1
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 513);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(387, 332);
+            this.Controls.Add(this.Login_button);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Pass_box);
@@ -110,7 +110,7 @@
             this.Controls.Add(this.Register_Button);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Form_1";
+            this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Log In";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -126,7 +126,7 @@
         private System.Windows.Forms.TextBox Pass_box;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Login_button;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
