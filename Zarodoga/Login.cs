@@ -27,9 +27,18 @@ namespace Zarodoga
 
             if (!User_box.Text.Equals("") && !Pass_box.Text.Equals(""))
             {
-                Adatbazis.InsertInto(User_box.Text, Pass_box.Text);
-                User_box.Clear();
-                Pass_box.Clear();
+                if (Adatbazis.RegisterCheck(User_box.Text) == 0)
+                {
+                    Adatbazis.InsertInto(User_box.Text, Pass_box.Text);
+                    User_box.Clear();
+                    Pass_box.Clear();
+                }
+                else
+                {
+                    string message = "Van már ilyen felhasználónév!";
+                    string caption = "Form Closing";
+                    MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {

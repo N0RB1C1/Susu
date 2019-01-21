@@ -95,12 +95,12 @@ namespace Zarodoga
             if (i.Equals(null))
             {
                 kapcsolodas.Close();
-                return 1;
+                return 0;
             }
             else
             {
                 kapcsolodas.Close();
-                return 0;
+                return 1;
             }
 
 
