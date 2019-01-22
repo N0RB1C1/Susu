@@ -23,8 +23,15 @@ namespace Zarodoga
             Application.Exit();
         }
 
+        // Playing 
+        private void Start_Button_Click(object sender, EventArgs e)
+        {
+            InGame form = new InGame();
+            this.Hide();
+            form.ShowDialog();
+        }
 
 
-        //Egyszer
+
     }
 }

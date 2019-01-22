@@ -76,7 +76,7 @@ namespace Zarodoga
         // Select username for register ()
         public static int RegisterCheck(string username)
         {
-            string i = null;
+            int i = 0;
             try
             {
                 kapcsolodas.Open();
@@ -89,10 +89,10 @@ namespace Zarodoga
                 DataTable dt = new DataTable();
                 MySqlDataAdapter da = new MySqlDataAdapter(command);
                 da.Fill(dt);
-                i = (dt.Rows.Count.ToString());
+                i = Convert.ToInt32((dt.Rows.Count.ToString()));
             }
             catch (Exception e) { Console.WriteLine(e); }
-            if (i.Equals(null))
+            if (i == 0)
             {
                 kapcsolodas.Close();
                 return 0;
