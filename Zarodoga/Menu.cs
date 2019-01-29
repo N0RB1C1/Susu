@@ -28,7 +28,7 @@ namespace Zarodoga
         {
             InGame form = new InGame();
             this.Hide();
-            form.ShowDialog();
+            form.ShowDialog();        
         }
 
 

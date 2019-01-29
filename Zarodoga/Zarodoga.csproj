@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adatbazis.cs" />
+    <Compile Include="Enemies.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Enemies.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Enemy.cs" />
     <Compile Include="InGame.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Enemies.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Enemies.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="InGame.resx">
       <DependentUpon>InGame.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +118,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Ooze.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shroom.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lizard.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ancient.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forestspirit.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -38,6 +38,8 @@
             this.Enemy_second_element = new System.Windows.Forms.PictureBox();
             this.Enemy_first_element = new System.Windows.Forms.PictureBox();
             this.Enemy_third_element = new System.Windows.Forms.PictureBox();
+            this.Enemy_Label = new System.Windows.Forms.Label();
+            this.Start_Ingame = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player_first_element)).BeginInit();
@@ -142,12 +144,34 @@
             this.Enemy_third_element.TabIndex = 2;
             this.Enemy_third_element.TabStop = false;
             // 
+            // Enemy_Label
+            // 
+            this.Enemy_Label.BackColor = System.Drawing.Color.Transparent;
+            this.Enemy_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Enemy_Label.Location = new System.Drawing.Point(275, 12);
+            this.Enemy_Label.Name = "Enemy_Label";
+            this.Enemy_Label.Size = new System.Drawing.Size(116, 115);
+            this.Enemy_Label.TabIndex = 3;
+            this.Enemy_Label.Text = "Enemy";
+            // 
+            // Start_Ingame
+            // 
+            this.Start_Ingame.Location = new System.Drawing.Point(169, 281);
+            this.Start_Ingame.Name = "Start_Ingame";
+            this.Start_Ingame.Size = new System.Drawing.Size(100, 23);
+            this.Start_Ingame.TabIndex = 4;
+            this.Start_Ingame.Text = "Start";
+            this.Start_Ingame.UseVisualStyleBackColor = true;
+            this.Start_Ingame.Click += new System.EventHandler(this.Start_Ingame_Click);
+            // 
             // InGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Zarodoga.Properties.Resources.Jungle_Background;
             this.ClientSize = new System.Drawing.Size(445, 566);
+            this.Controls.Add(this.Start_Ingame);
+            this.Controls.Add(this.Enemy_Label);
             this.Controls.Add(this.Player_third_element);
             this.Controls.Add(this.Enemy_third_element);
             this.Controls.Add(this.Player_second_element);
@@ -161,7 +185,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "InGame";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InGame";
+            this.Load += new System.EventHandler(this.InGame_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player_first_element)).EndInit();
@@ -186,5 +212,7 @@
         private System.Windows.Forms.PictureBox Enemy_second_element;
         private System.Windows.Forms.PictureBox Enemy_first_element;
         private System.Windows.Forms.PictureBox Enemy_third_element;
+        private System.Windows.Forms.Label Enemy_Label;
+        private System.Windows.Forms.Button Start_Ingame;
     }
 }

@@ -40,3 +40,4 @@ C:\Users\N0RB1C1\Source\Repos\Susu\Zarodoga\obj\Debug\Zarodoga.pdb
 C:\Users\Diak\Source\Repos\Susu\Zarodoga\obj\Debug\Zarodoga.Login.resources
 C:\Users\Diak\Source\Repos\Susu\Zarodoga\obj\Debug\Zarodoga.Menu.resources
 C:\Users\Diak\Source\Repos\Susu\Zarodoga\obj\Debug\Zarodoga.InGame.resources
+C:\Users\Diak\Source\Repos\Susu\Zarodoga\obj\Debug\Zarodoga.Enemies.resources
