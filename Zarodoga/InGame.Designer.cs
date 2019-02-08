@@ -90,7 +90,7 @@
             // 
             // Player_first_element
             // 
-            this.Player_first_element.BackColor = System.Drawing.Color.Transparent;
+            this.Player_first_element.BackColor = System.Drawing.Color.White;
             this.Player_first_element.Location = new System.Drawing.Point(45, 310);
             this.Player_first_element.Name = "Player_first_element";
             this.Player_first_element.Size = new System.Drawing.Size(100, 100);
@@ -100,7 +100,7 @@
             // 
             // Player_second_element
             // 
-            this.Player_second_element.BackColor = System.Drawing.Color.Transparent;
+            this.Player_second_element.BackColor = System.Drawing.Color.White;
             this.Player_second_element.Location = new System.Drawing.Point(169, 310);
             this.Player_second_element.Name = "Player_second_element";
             this.Player_second_element.Size = new System.Drawing.Size(100, 100);
@@ -109,7 +109,7 @@
             // 
             // Player_third_element
             // 
-            this.Player_third_element.BackColor = System.Drawing.Color.Transparent;
+            this.Player_third_element.BackColor = System.Drawing.Color.White;
             this.Player_third_element.Location = new System.Drawing.Point(291, 310);
             this.Player_third_element.Name = "Player_third_element";
             this.Player_third_element.Padding = new System.Windows.Forms.Padding(3);

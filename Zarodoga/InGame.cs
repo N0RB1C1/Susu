@@ -27,15 +27,19 @@ namespace Zarodoga
 
         private void Player_first_element_Click(object sender, EventArgs e)
         {
+            Point p = new Point();
+            p = Cursor.Position;
+
+
+
             // Első választható elem
             Element_First = new PictureBox
             {
                 Name = "Element_Choose",
                 Size = new Size(15, 15),
-                Location = new Point(65, 330),
+                Location = new Point(),
                 BackColor = Color.Red,               
             };
-            Element_First.Click += Element_First_Click;
 
             // Második választható elem 
             Element_Second = new PictureBox
@@ -55,15 +59,20 @@ namespace Zarodoga
                 BackColor = Color.LawnGreen
             };
 
+            // Eventek hozzáadása
+            Element_First.Click += Element_Change_Click;
+            Element_Second.Click += Element_Change_Click;
+            Element_Third.Click += Element_Change_Click;
             this.Controls.Remove(Player_first_element);
             this.Controls.Add(Element_First);
             this.Controls.Add(Element_Second);
             this.Controls.Add(Element_Third);
         }
 
-        private void Element_First_Click(object sender, EventArgs e)
+        private void Element_Change_Click(object sender, EventArgs e)
         {
-            Player_first_element.BackColor = Element_First.BackColor;
+            PictureBox pictruebox = (PictureBox)sender;
+            Player_first_element.BackColor = pictruebox.BackColor;
             this.Controls.Add(Player_first_element);
             this.Controls.Remove(Element_First);
             this.Controls.Remove(Element_Second);
