@@ -96,7 +96,7 @@
             this.Player_first_element.Size = new System.Drawing.Size(100, 100);
             this.Player_first_element.TabIndex = 2;
             this.Player_first_element.TabStop = false;
-            this.Player_first_element.Click += new System.EventHandler(this.Player_first_element_Click);
+            this.Player_first_element.Click += new System.EventHandler(this.Player_element_Click);
             // 
             // Player_second_element
             // 
@@ -106,6 +106,7 @@
             this.Player_second_element.Size = new System.Drawing.Size(100, 100);
             this.Player_second_element.TabIndex = 2;
             this.Player_second_element.TabStop = false;
+            this.Player_second_element.Click += new System.EventHandler(this.Player_element_Click);
             // 
             // Player_third_element
             // 
@@ -116,6 +117,7 @@
             this.Player_third_element.Size = new System.Drawing.Size(100, 100);
             this.Player_third_element.TabIndex = 2;
             this.Player_third_element.TabStop = false;
+            this.Player_third_element.Click += new System.EventHandler(this.Player_element_Click);
             // 
             // Enemy_second_element
             // 

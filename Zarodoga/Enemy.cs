@@ -51,5 +51,11 @@ namespace Zarodoga
             this.healt_Point = level * 50 + 100;
         }
 
+        public int level_one_enemy_behaviour()
+        {
+            int random;
+            random = Rand.Next(1, 3);
+            return random;
+        }
     }
 }
