@@ -52,7 +52,7 @@
             // 
             // Player
             // 
-            this.Player.Location = new System.Drawing.Point(169, 441);
+            this.Player.Location = new System.Drawing.Point(169, 476);
             this.Player.Name = "Player";
             this.Player.Size = new System.Drawing.Size(100, 113);
             this.Player.TabIndex = 0;
@@ -72,7 +72,7 @@
             // 
             this.Player_hp.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.Player_hp.ForeColor = System.Drawing.Color.White;
-            this.Player_hp.Location = new System.Drawing.Point(169, 415);
+            this.Player_hp.Location = new System.Drawing.Point(169, 450);
             this.Player_hp.Name = "Player_hp";
             this.Player_hp.Size = new System.Drawing.Size(100, 20);
             this.Player_hp.TabIndex = 1;
@@ -91,9 +91,11 @@
             // Player_first_element
             // 
             this.Player_first_element.BackColor = System.Drawing.Color.White;
-            this.Player_first_element.Location = new System.Drawing.Point(45, 310);
+            this.Player_first_element.BackgroundImage = global::Zarodoga.Properties.Resources.Elements;
+            this.Player_first_element.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Player_first_element.Location = new System.Drawing.Point(45, 299);
             this.Player_first_element.Name = "Player_first_element";
-            this.Player_first_element.Size = new System.Drawing.Size(100, 100);
+            this.Player_first_element.Size = new System.Drawing.Size(100, 145);
             this.Player_first_element.TabIndex = 2;
             this.Player_first_element.TabStop = false;
             this.Player_first_element.Click += new System.EventHandler(this.Player_element_Click);
@@ -101,9 +103,11 @@
             // Player_second_element
             // 
             this.Player_second_element.BackColor = System.Drawing.Color.White;
-            this.Player_second_element.Location = new System.Drawing.Point(169, 310);
+            this.Player_second_element.BackgroundImage = global::Zarodoga.Properties.Resources.Elements;
+            this.Player_second_element.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Player_second_element.Location = new System.Drawing.Point(169, 299);
             this.Player_second_element.Name = "Player_second_element";
-            this.Player_second_element.Size = new System.Drawing.Size(100, 100);
+            this.Player_second_element.Size = new System.Drawing.Size(100, 145);
             this.Player_second_element.TabIndex = 2;
             this.Player_second_element.TabStop = false;
             this.Player_second_element.Click += new System.EventHandler(this.Player_element_Click);
@@ -111,10 +115,12 @@
             // Player_third_element
             // 
             this.Player_third_element.BackColor = System.Drawing.Color.White;
-            this.Player_third_element.Location = new System.Drawing.Point(291, 310);
+            this.Player_third_element.BackgroundImage = global::Zarodoga.Properties.Resources.Elements;
+            this.Player_third_element.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Player_third_element.Location = new System.Drawing.Point(291, 299);
             this.Player_third_element.Name = "Player_third_element";
             this.Player_third_element.Padding = new System.Windows.Forms.Padding(3);
-            this.Player_third_element.Size = new System.Drawing.Size(100, 100);
+            this.Player_third_element.Size = new System.Drawing.Size(100, 145);
             this.Player_third_element.TabIndex = 2;
             this.Player_third_element.TabStop = false;
             this.Player_third_element.Click += new System.EventHandler(this.Player_element_Click);
@@ -158,7 +164,7 @@
             // 
             // Start_Ingame
             // 
-            this.Start_Ingame.Location = new System.Drawing.Point(169, 281);
+            this.Start_Ingame.Location = new System.Drawing.Point(169, 270);
             this.Start_Ingame.Name = "Start_Ingame";
             this.Start_Ingame.Size = new System.Drawing.Size(100, 23);
             this.Start_Ingame.TabIndex = 4;
@@ -171,7 +177,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Zarodoga.Properties.Resources.Jungle_Background;
-            this.ClientSize = new System.Drawing.Size(445, 566);
+            this.ClientSize = new System.Drawing.Size(445, 601);
             this.Controls.Add(this.Start_Ingame);
             this.Controls.Add(this.Enemy_Label);
             this.Controls.Add(this.Player_third_element);

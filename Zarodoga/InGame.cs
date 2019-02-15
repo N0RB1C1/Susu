@@ -21,6 +21,8 @@ namespace Zarodoga
         private static int marker;
         Ellenseg ellen = new Ellenseg();
 
+
+
         public InGame()
         {
             InitializeComponent();
@@ -105,6 +107,7 @@ namespace Zarodoga
         // Enemy auto generate
         private void InGame_Load(object sender, EventArgs e)
         {
+           
             //Véletlenszerű ellenség
             creature.Add(ellen);
             Enemy_Label.Text = (
@@ -145,12 +148,22 @@ namespace Zarodoga
                 Enemy_second_element.BackColor = Color.Aqua;
                 Enemy_third_element.BackColor = Color.Aqua;
             }
-            if (Player_hp.Value > 0)
-            {
-                if (winner(Player_first_element, Enemy_first_element) == 1)
+
+            // Player életerő ellenörzése
+                if (Player_hp.Value > 0)
                 {
-                    Player_hp.Value = Player_hp.Value - 20;
-                }
+                    if (winner(Player_first_element, Enemy_first_element) == 1)
+                    {
+                        Player_hp.Value = Player_hp.Value - 20;
+                    }
+                    else if (winner(Player_first_element, Enemy_first_element) == 2)
+                    {
+                        Enemy_hp.Value = Enemy_hp.Value - 20;
+                    }
+            }
+                if (Player_hp.Value == 0)
+            {
+                Start_Ingame.Enabled = false;
             }
             this.Controls.Add(Start_Ingame);
         }
@@ -163,6 +176,10 @@ namespace Zarodoga
             if (pictruebox.BackColor == pictruebox2.BackColor)
             {
                 return 0;
+            }
+            else if (pictruebox.BackColor.Equals(Color.Aqua) && pictruebox2.BackColor.Equals(Color.Red))
+            {
+                return 2;
             }
             return 1;
         }
