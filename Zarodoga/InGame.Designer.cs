@@ -1,4 +1,6 @@
-﻿namespace Zarodoga
+﻿using System;
+
+namespace Zarodoga
 {
     partial class InGame
     {
@@ -40,6 +42,7 @@
             this.Enemy_third_element = new System.Windows.Forms.PictureBox();
             this.Enemy_Label = new System.Windows.Forms.Label();
             this.Start_Ingame = new System.Windows.Forms.Button();
+            this.info_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player_first_element)).BeginInit();
@@ -172,12 +175,20 @@
             this.Start_Ingame.UseVisualStyleBackColor = true;
             this.Start_Ingame.Click += new System.EventHandler(this.Start_Ingame_Click);
             // 
+            // info_label
+            // 
+            this.info_label.Location = new System.Drawing.Point(288, 476);
+            this.info_label.Name = "info_label";
+            this.info_label.Size = new System.Drawing.Size(103, 83);
+            this.info_label.TabIndex = 5;
+            // 
             // InGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Zarodoga.Properties.Resources.Jungle_Background;
             this.ClientSize = new System.Drawing.Size(445, 601);
+            this.Controls.Add(this.info_label);
             this.Controls.Add(this.Start_Ingame);
             this.Controls.Add(this.Enemy_Label);
             this.Controls.Add(this.Player_third_element);
@@ -222,5 +233,6 @@
         private System.Windows.Forms.PictureBox Enemy_third_element;
         private System.Windows.Forms.Label Enemy_Label;
         private System.Windows.Forms.Button Start_Ingame;
+        private System.Windows.Forms.Label info_label;
     }
 }

@@ -48,7 +48,7 @@ namespace Zarodoga
         {
             this.name = ellenseg[Rand.Next(0,5)];
             this.level = Rand.Next(1,6);
-            this.healt_Point = level * 50 + 100;
+            this.healt_Point = level * 20 + 50;
         }
 
         public int level_one_enemy_behaviour()
@@ -57,5 +57,7 @@ namespace Zarodoga
             random = Rand.Next(1, 3);
             return random;
         }
+
+
     }
 }

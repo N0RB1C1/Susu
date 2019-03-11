@@ -60,15 +60,25 @@ namespace Zarodoga
                 Location = new Point(pictruebox.Location.X + 40, pictruebox.Location.Y + 70),
                 BackColor = Color.LawnGreen
             };
-            if (pictruebox.Equals(Player_first_element))
+
+            
             {
-                marker = 1;
+
+                if (pictruebox.Equals(Player_first_element))
+                {
+                    marker = 1;
+                }
+
+                else if (pictruebox.Equals(Player_second_element))
+                {
+                    marker = 2;              
+                }
+
+                else if (pictruebox.Equals(Player_third_element))
+                {
+                    marker = 3;                                 
+                }
             }
-            else if (pictruebox.Equals(Player_second_element))
-            {
-                marker = 2;
-            }
-            else marker = 3;
 
             // Eventek hozzáadása
             Element_First.Click += Element_Change_Click;
@@ -84,21 +94,28 @@ namespace Zarodoga
         private void Element_Change_Click(object sender, EventArgs e)
         {
             PictureBox pictruebox = (PictureBox)sender;
+
             if(marker == 1)
             {
                 Player_first_element.BackColor = pictruebox.BackColor;
+                Player_first_element.BackgroundImage = null;
                 this.Controls.Add(Player_first_element);
             }
+
             else if (marker == 2)
             {
                 Player_second_element.BackColor = pictruebox.BackColor;
+                Player_second_element.BackgroundImage = null;
                 this.Controls.Add(Player_second_element);
             }
+
             else if (marker == 3)
             {
                 Player_third_element.BackColor = pictruebox.BackColor;
+                Player_third_element.BackgroundImage = null;
                 this.Controls.Add(Player_third_element);
             }
+
             this.Controls.Remove(Element_First);
             this.Controls.Remove(Element_Second);
             this.Controls.Remove(Element_Third);
@@ -129,19 +146,21 @@ namespace Zarodoga
         // Kör kezdete
         private void Start_Ingame_Click(object sender, EventArgs e)
         {
-            this.Controls.Remove(Start_Ingame);
+
             if (ellen.level_one_enemy_behaviour() == 1)
             {
                 Enemy_first_element.BackColor = Color.Red;
                 Enemy_second_element.BackColor = Color.Red;
                 Enemy_third_element.BackColor = Color.Red;
             }
-            else if(ellen.level_one_enemy_behaviour() == 2)
+
+            else if (ellen.level_one_enemy_behaviour() == 2)
             {
                 Enemy_first_element.BackColor = Color.LawnGreen;
                 Enemy_second_element.BackColor = Color.LawnGreen;
                 Enemy_third_element.BackColor = Color.LawnGreen;
             }
+
             else
             {
                 Enemy_first_element.BackColor = Color.Aqua;
@@ -149,39 +168,114 @@ namespace Zarodoga
                 Enemy_third_element.BackColor = Color.Aqua;
             }
 
-            // Player életerő ellenörzése
-                if (Player_hp.Value > 0)
+            // Életerő ellenörzés
+            if (Player_hp.Value > 0 && Enemy_hp.Value > 0)
+            {
+
+                // Első elem ellenörzés
+                if (winner(Player_first_element, Enemy_first_element) == 1)
                 {
-                    if (winner(Player_first_element, Enemy_first_element) == 1)
-                    {
-                        Player_hp.Value = Player_hp.Value - 20;
-                    }
-                    else if (winner(Player_first_element, Enemy_first_element) == 2)
-                    {
-                        Enemy_hp.Value = Enemy_hp.Value - 20;
-                    }
+                    Player_hp.Value = Player_hp.Value - 10;
+                }
+
+                else if (winner(Player_first_element, Enemy_first_element) == 2)
+                {
+                    Enemy_hp.Value = Enemy_hp.Value - 10;
+                }
             }
-                if (Player_hp.Value == 0)
+            // Életerő ellenörzés
+            if (Player_hp.Value > 0 && Enemy_hp.Value > 0)
+            {
+                // Második elem ellenörzése
+                if (winner(Player_second_element, Enemy_second_element) == 1)
+                {
+                    Player_hp.Value = Player_hp.Value - 10;
+                }
+                else if (winner(Player_second_element, Enemy_second_element) == 2)
+                {
+                    Enemy_hp.Value = Enemy_hp.Value - 10;
+                }
+            }
+            // Életerő ellenörzés
+            if (Player_hp.Value > 0 && Enemy_hp.Value > 0)
+            {
+
+                // Harmadik elem ellenörzése
+                if (winner(Player_third_element, Enemy_third_element) == 1)
+                {
+                    Player_hp.Value = Player_hp.Value - 10;
+                }
+
+                else if (winner(Player_third_element, Enemy_third_element) == 2)
+                {
+                    Enemy_hp.Value = Enemy_hp.Value - 10;
+                }
+            }
+
+            info_label.Text = (
+                "Az ellenség élete: " + Enemy_hp.Value
+                + "A játékos élete: " + Player_hp.Value
+                );
+            
+            if (Player_hp.Value == 0)
             {
                 Start_Ingame.Enabled = false;
+                Loot form = new Loot();
+                form.BackColor.Equals(Color.DarkRed);
+                form.Show();                            
             }
-            this.Controls.Add(Start_Ingame);
+            else if (Enemy_hp. Value == 0)
+            {
+                Start_Ingame.Enabled = false;
+                Loot form = new Loot();
+                form.BackColor.Equals(Color.DarkGreen);
+                form.Show();
+            }
         }
 
+        // Elemek ellenörzése
         public int winner(object a, object b)
         {
-            PictureBox pictruebox = (PictureBox)a;
-            PictureBox pictruebox2 = (PictureBox)b;
-            int win;
-            if (pictruebox.BackColor == pictruebox2.BackColor)
+            PictureBox player = (PictureBox)a;
+            PictureBox enemy = (PictureBox)b;
+            
+            if (player.BackColor == enemy.BackColor)
             {
                 return 0;
             }
-            else if (pictruebox.BackColor.Equals(Color.Aqua) && pictruebox2.BackColor.Equals(Color.Red))
+
+            else if (player.BackColor.Equals(Color.Aqua) && enemy.BackColor.Equals(Color.Red))
             {
                 return 2;
             }
-            return 1;
+
+            else if (player.BackColor.Equals(Color.Aqua) && enemy.BackColor.Equals(Color.LawnGreen))
+            {
+                return 1;
+            }
+
+            else if (player.BackColor.Equals(Color.LawnGreen) && enemy.BackColor.Equals(Color.Red))
+            {
+                return 1;
+            }
+
+            else if (player.BackColor.Equals(Color.LawnGreen) && enemy.BackColor.Equals(Color.Aqua))
+            {
+                return 2;
+            }
+
+            else if (player.BackColor.Equals(Color.Red) && enemy.BackColor.Equals(Color.Aqua))
+            {
+                return 1;
+            }
+
+            else if (player.BackColor.Equals(Color.Red) && enemy.BackColor.Equals(Color.LawnGreen))
+            {
+                return 2;
+            }
+
+
+            return 0;    
         }
 
         // change is good
