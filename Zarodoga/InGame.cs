@@ -17,114 +17,216 @@ namespace Zarodoga
         private PictureBox Element_First;
         private PictureBox Element_Second;
         private PictureBox Element_Third;
+        private PictureBox Element_Fourth;
+        private PictureBox Element_Fiveth;
+        private PictureBox Element_Sixth;
+        private PictureBox Element_Seventh;
+        private PictureBox Element_Eighth;
+        private PictureBox Element_Nineth;
         List<Ellenseg> creature = new List<Ellenseg>();
-        private static int marker;
         Ellenseg ellen = new Ellenseg();
-
+        new List<Color> colours = new List<Color>();
 
 
         public InGame()
         {
             InitializeComponent();
             resManager = new ResourceManager("Zarodoga.Enemies", GetType().Assembly);
+            colours.Add(Color.Aqua);
+            colours.Add(Color.LawnGreen);
+            colours.Add(Color.Red);
+
         }
 
         // Első elem választása
         private void Player_element_Click(object sender, EventArgs e)
         {
-            PictureBox pictruebox = (PictureBox)sender;
-            
-            // Első választható elem
-            Element_First = new PictureBox
+            PictureBox picturebox = (PictureBox)sender;
+            Start_Ingame.Enabled = false;
+            // Első elemek kiválasztása
+            if (picturebox.Equals(Player_first_element))
             {
-                Name = "Element_Choose",
-                Size = new Size(15, 15),
-                Location = new Point(pictruebox.Location.X+10,pictruebox.Location.Y+20),
-                BackColor = Color.Red,               
-            };
-
-            // Második választható elem 
-            Element_Second = new PictureBox
-            {
-                Name = "Element_Choose",
-                Size = new Size(15, 15),
-                Location = new Point(pictruebox.Location.X + 70, pictruebox.Location.Y + 20),
-                BackColor = Color.Aqua
-            };
-
-            // Harmadik választható elem 
-            Element_Third = new PictureBox
-            {
-                Name = "Element_Choose",
-                Size = new Size(15, 15),
-                Location = new Point(pictruebox.Location.X + 40, pictruebox.Location.Y + 70),
-                BackColor = Color.LawnGreen
-            };
-
-            
-            {
-
-                if (pictruebox.Equals(Player_first_element))
+                // Első kisikon /1
+                Element_First = new PictureBox
                 {
-                    marker = 1;
-                }
+                    Name = "Element_Choose",
+                    Size = new Size(15, 15),
+                    Location = new Point(picturebox.Location.X + 10, picturebox.Location.Y + 20),
+                    BackColor = Color.Red,
+                };
 
-                else if (pictruebox.Equals(Player_second_element))
+                // Második kisikon /1
+                Element_Second = new PictureBox
                 {
-                    marker = 2;              
-                }
+                    Name = "Element_Choose",
+                    Size = new Size(15, 15),
+                    Location = new Point(picturebox.Location.X + 70, picturebox.Location.Y + 20),
+                    BackColor = Color.Aqua,
+                };
 
-                else if (pictruebox.Equals(Player_third_element))
+                // Harmadik kisikon /1
+                Element_Third = new PictureBox
                 {
-                    marker = 3;                                 
-                }
+                    Name = "Element_Choose",
+                    Size = new Size(15, 15),
+                    Location = new Point(picturebox.Location.X + 40, picturebox.Location.Y + 70),
+                    BackColor = Color.LawnGreen,
+                };
             }
 
-            // Eventek hozzáadása
-            Element_First.Click += Element_Change_Click;
-            Element_Second.Click += Element_Change_Click;
-            Element_Third.Click += Element_Change_Click;
-            this.Controls.Remove(pictruebox);
-            this.Controls.Add(Element_First);
-            this.Controls.Add(Element_Second);
-            this.Controls.Add(Element_Third);
+            // Második elemek kiválasztása
+            else if (picturebox.Equals(Player_second_element))
+            {
+                // Első kisikon /2
+                Element_Fourth = new PictureBox
+                {
+                    Name = "Element_Choose",
+                    Size = new Size(15, 15),
+                    Location = new Point(picturebox.Location.X + 10, picturebox.Location.Y + 20),
+                    BackColor = Color.Red,
+                };
+
+                // Második kisikon /2
+                Element_Fiveth = new PictureBox
+                {
+                    Name = "Element_Choose",
+                    Size = new Size(15, 15),
+                    Location = new Point(picturebox.Location.X + 70, picturebox.Location.Y + 20),
+                    BackColor = Color.Aqua,
+                };
+
+                // Harmadik kisikon /2
+                Element_Sixth = new PictureBox
+                {
+                    Name = "Element_Choose",
+                    Size = new Size(15, 15),
+                    Location = new Point(picturebox.Location.X + 40, picturebox.Location.Y + 70),
+                    BackColor = Color.LawnGreen,
+                };
+            }
+
+            // Harmadik elemek kiválasztása
+            else if (picturebox.Equals(Player_third_element))
+            {
+                // Első kisikon /3
+                Element_Seventh = new PictureBox
+                {
+                    Name = "Element_Choose",
+                    Size = new Size(15, 15),
+                    Location = new Point(picturebox.Location.X + 10, picturebox.Location.Y + 20),
+                    BackColor = Color.Red,
+                };
+
+                // Második kisikon /3
+                Element_Eighth = new PictureBox
+                {
+                    Name = "Element_Choose",
+                    Size = new Size(15, 15),
+                    Location = new Point(picturebox.Location.X + 70, picturebox.Location.Y + 20),
+                    BackColor = Color.Aqua,
+                };
+
+                // Harmadik kisikon /3
+                Element_Nineth = new PictureBox
+                {
+                    Name = "Element_Choose",
+                    Size = new Size(15, 15),
+                    Location = new Point(picturebox.Location.X + 40, picturebox.Location.Y + 70),
+                    BackColor = Color.LawnGreen,
+                };
+            }
+
+
+            if (picturebox.Equals(Player_first_element))
+            {
+                // Eventek hozzáadása
+                Element_First.Click += Element_First_Change_Click;
+                Element_Second.Click += Element_First_Change_Click;
+                Element_Third.Click += Element_First_Change_Click;
+                this.Controls.Remove(picturebox);
+                this.Controls.Add(Element_First);
+                this.Controls.Add(Element_Second);
+                this.Controls.Add(Element_Third);
+            }
+
+            else if (picturebox.Equals(Player_second_element))
+            {
+                // Eventek hozzáadása
+                Element_Fourth.Click += Element_Second_Change_Click;
+                Element_Fiveth.Click += Element_Second_Change_Click;
+                Element_Sixth.Click += Element_Second_Change_Click;
+                this.Controls.Remove(picturebox);
+                this.Controls.Add(Element_Fourth);
+                this.Controls.Add(Element_Fiveth);
+                this.Controls.Add(Element_Sixth);
+            }
+
+            else if (picturebox.Equals(Player_third_element))
+            {
+                // Eventek hozzáadása
+                Element_Seventh.Click += Element_Third_Change_Click;
+                Element_Eighth.Click += Element_Third_Change_Click;
+                Element_Nineth.Click += Element_Third_Change_Click;
+                this.Controls.Remove(picturebox);
+                this.Controls.Add(Element_Seventh);
+                this.Controls.Add(Element_Eighth);
+                this.Controls.Add(Element_Nineth);
+            }
         }
 
-        // Kis ikon katt event
-        private void Element_Change_Click(object sender, EventArgs e)
+        // Kis ikon katt eventek 
+        private void Element_First_Change_Click(object sender, EventArgs e)
         {
-            PictureBox pictruebox = (PictureBox)sender;
+            PictureBox picturebox = (PictureBox)sender;
 
-            if(marker == 1)
-            {
-                Player_first_element.BackColor = pictruebox.BackColor;
-                Player_first_element.BackgroundImage = null;
-                this.Controls.Add(Player_first_element);
-            }
-
-            else if (marker == 2)
-            {
-                Player_second_element.BackColor = pictruebox.BackColor;
-                Player_second_element.BackgroundImage = null;
-                this.Controls.Add(Player_second_element);
-            }
-
-            else if (marker == 3)
-            {
-                Player_third_element.BackColor = pictruebox.BackColor;
-                Player_third_element.BackgroundImage = null;
-                this.Controls.Add(Player_third_element);
-            }
-
+            Player_first_element.BackColor = picturebox.BackColor;
+            Player_first_element.BackgroundImage = null;
+            this.Controls.Add(Player_first_element);           
             this.Controls.Remove(Element_First);
             this.Controls.Remove(Element_Second);
             this.Controls.Remove(Element_Third);
+            if (!Player_first_element.BackColor.Equals(Color.White) && !Player_second_element.BackColor.Equals(Color.White) && !Player_third_element.BackColor.Equals(Color.White))
+            {
+                Start_Ingame.Enabled = true;
+            }
+
+        }
+        private void Element_Second_Change_Click(object sender, EventArgs e)
+        {
+            PictureBox pictruebox = (PictureBox)sender;
+
+            Player_second_element.BackColor = pictruebox.BackColor;
+            Player_second_element.BackgroundImage = null;
+            this.Controls.Add(Player_second_element);
+            this.Controls.Remove(Element_Fourth);
+            this.Controls.Remove(Element_Fiveth);
+            this.Controls.Remove(Element_Sixth);
+            if (!Player_first_element.BackColor.Equals(Color.White) && !Player_second_element.BackColor.Equals(Color.White) && !Player_third_element.BackColor.Equals(Color.White))
+            {
+                Start_Ingame.Enabled = true;
+            }
+        }
+        private void Element_Third_Change_Click(object sender, EventArgs e)
+        {
+            PictureBox pictruebox = (PictureBox)sender;
+
+            Player_third_element.BackColor = pictruebox.BackColor;
+            Player_third_element.BackgroundImage = null;
+            this.Controls.Add(Player_third_element);
+            this.Controls.Remove(Element_Seventh);
+            this.Controls.Remove(Element_Eighth);
+            this.Controls.Remove(Element_Nineth);
+            if (!Player_first_element.BackColor.Equals(Color.White) && !Player_second_element.BackColor.Equals(Color.White) && !Player_third_element.BackColor.Equals(Color.White))
+            {
+                Start_Ingame.Enabled = true;
+            }
         }
 
         // Enemy auto generate
         private void InGame_Load(object sender, EventArgs e)
         {
-           
+            Start_Ingame.Enabled = false;
+
             //Véletlenszerű ellenség
             creature.Add(ellen);
             Enemy_Label.Text = (
@@ -146,27 +248,7 @@ namespace Zarodoga
         // Kör kezdete
         private void Start_Ingame_Click(object sender, EventArgs e)
         {
-
-            if (ellen.level_one_enemy_behaviour() == 1)
-            {
-                Enemy_first_element.BackColor = Color.Red;
-                Enemy_second_element.BackColor = Color.Red;
-                Enemy_third_element.BackColor = Color.Red;
-            }
-
-            else if (ellen.level_one_enemy_behaviour() == 2)
-            {
-                Enemy_first_element.BackColor = Color.LawnGreen;
-                Enemy_second_element.BackColor = Color.LawnGreen;
-                Enemy_third_element.BackColor = Color.LawnGreen;
-            }
-
-            else
-            {
-                Enemy_first_element.BackColor = Color.Aqua;
-                Enemy_second_element.BackColor = Color.Aqua;
-                Enemy_third_element.BackColor = Color.Aqua;
-            }
+            Enemy_behaviour(ellen.Level);
 
             // Életerő ellenörzés
             if (Player_hp.Value > 0 && Enemy_hp.Value > 0)
@@ -211,11 +293,6 @@ namespace Zarodoga
                     Enemy_hp.Value = Enemy_hp.Value - 10;
                 }
             }
-
-            info_label.Text = (
-                "Az ellenség élete: " + Enemy_hp.Value
-                + "A játékos élete: " + Player_hp.Value
-                );
             
             if (Player_hp.Value == 0)
             {
@@ -231,6 +308,12 @@ namespace Zarodoga
                 form.BackColor.Equals(Color.DarkGreen);
                 form.Show();
             }
+
+            info_label.Text = (
+            "Az ellenség élete: " + Enemy_hp.Value
+            + "\nA játékos élete: " + Player_hp.Value
+            );
+            
         }
 
         // Elemek ellenörzése
@@ -278,6 +361,154 @@ namespace Zarodoga
             return 0;    
         }
 
+        private void Round_Tick(object sender, EventArgs e)
+        {
+            int a = 0;
+            a++;
+            if (a > 5)
+            {
+                Round.Tag = "Stop";
+            }
+        }
+
+        // Ellenfél viselkedése
+        public void Enemy_behaviour(int level)
+        {
+            switch (level)
+            {
+
+                case 1:
+                    Random r0 = new Random();
+                    int rand;
+                    rand = r0.Next(0, 3);
+                    if (rand == 0)
+                    {
+                        Enemy_first_element.BackColor = Color.Aqua;
+                        Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_third_element.BackColor = Color.Aqua;
+                    }
+                    else if (rand == 1)
+                    {
+                        Enemy_first_element.BackColor = Color.LawnGreen;
+                        Enemy_second_element.BackColor = Color.LawnGreen;
+                        Enemy_third_element.BackColor = Color.LawnGreen;
+                    }
+                    else
+                    {
+                        Enemy_first_element.BackColor = Color.Red;
+                        Enemy_second_element.BackColor = Color.Red;
+                        Enemy_third_element.BackColor = Color.Red;
+                    }
+                    break;
+
+                case 2:
+                    Random r1 = new Random();
+                    rand = r1.Next(0, 4);
+                    if (rand == 0)
+                    {
+                        Enemy_first_element.BackColor = Color.LawnGreen;
+                        Enemy_second_element.BackColor = Color.Red;
+                        Enemy_third_element.BackColor = Color.Aqua;
+                    }
+                    else if (rand == 1)
+                    {
+                        Enemy_first_element.BackColor = Color.LawnGreen;
+                        Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_third_element.BackColor = Color.Red;
+                    }
+                    else if (rand == 2)
+                    {
+                        Enemy_first_element.BackColor = Color.Red;
+                        Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_third_element.BackColor = Color.LawnGreen;
+                    }
+                    else
+                    {
+                        Enemy_first_element.BackColor = Color.Red;
+                        Enemy_second_element.BackColor = Color.LawnGreen;
+                        Enemy_third_element.BackColor = Color.Aqua;
+                    }
+                    break;
+
+                case 3:
+
+                    Random r2 = new Random();
+                    rand = r2.Next(0, 7);
+                    if (rand == 0)
+                    {
+                        Enemy_first_element.BackColor = Color.Red;
+                        Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_third_element.BackColor = Color.Red;
+                    }
+                    else if (rand == 1)
+                    {
+                        Enemy_first_element.BackColor = Color.Aqua;
+                        Enemy_second_element.BackColor = Color.Red;
+                        Enemy_third_element.BackColor = Color.Aqua;
+                    }
+                    else if (rand == 2)
+                    {
+                        Enemy_first_element.BackColor = Color.LawnGreen;
+                        Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_third_element.BackColor = Color.LawnGreen;
+                    }
+                    else if (rand == 3)
+                    {
+                        Enemy_first_element.BackColor = Color.Red;
+                        Enemy_second_element.BackColor = Color.Red;
+                        Enemy_third_element.BackColor = Color.LawnGreen;
+                    }
+                    else if (rand == 4)
+                    {
+                        Enemy_first_element.BackColor = Color.Red;
+                        Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_third_element.BackColor = Color.Aqua;
+                    }
+                    else if (rand == 5)
+                    {
+                        Enemy_first_element.BackColor = Color.Red;
+                        Enemy_second_element.BackColor = Color.LawnGreen;
+                        Enemy_third_element.BackColor = Color.LawnGreen;
+                    }
+                    else
+                    {
+                        Enemy_first_element.BackColor = Color.LawnGreen;
+                        Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_third_element.BackColor = Color.Aqua;
+                    }
+                    break;
+
+                case 4:
+                    Random r3 = new Random();
+                    rand = r3.Next(0, 2);
+                    if (rand == 0)
+                    {
+                        Enemy_first_element.BackColor = Color.Red;
+                        Enemy_second_element.BackColor = Color.LawnGreen;
+                        Enemy_third_element.BackColor = Color.LawnGreen;
+                    }
+
+                    break;
+
+                case 5:
+                                   
+                    Random r4 = new Random();
+                    rand = r4.Next(0, 2);
+                    Enemy_first_element.BackColor = colours[rand];
+                    rand = r4.Next(0, 2);
+                    Enemy_second_element.BackColor = colours[rand];
+                    rand = r4.Next(0, 2);
+                    Enemy_third_element.BackColor = colours[rand];
+                    break;
+
+                default:              
+                    Enemy_first_element.BackColor = Color.Aqua;
+                    Enemy_second_element.BackColor = Color.Aqua;
+                    Enemy_third_element.BackColor = Color.Aqua;
+                    break;
+            }
+                 
+        }
         // change is good
     }
 }

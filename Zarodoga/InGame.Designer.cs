@@ -30,6 +30,7 @@ namespace Zarodoga
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Player = new System.Windows.Forms.PictureBox();
             this.Enemy = new System.Windows.Forms.PictureBox();
             this.Player_hp = new System.Windows.Forms.ProgressBar();
@@ -43,6 +44,7 @@ namespace Zarodoga
             this.Enemy_Label = new System.Windows.Forms.Label();
             this.Start_Ingame = new System.Windows.Forms.Button();
             this.info_label = new System.Windows.Forms.Label();
+            this.Round = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player_first_element)).BeginInit();
@@ -182,6 +184,10 @@ namespace Zarodoga
             this.info_label.Size = new System.Drawing.Size(103, 83);
             this.info_label.TabIndex = 5;
             // 
+            // Round
+            // 
+            this.Round.Tick += new System.EventHandler(this.Round_Tick);
+            // 
             // InGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,5 +240,6 @@ namespace Zarodoga
         private System.Windows.Forms.Label Enemy_Label;
         private System.Windows.Forms.Button Start_Ingame;
         private System.Windows.Forms.Label info_label;
+        private System.Windows.Forms.Timer Round;
     }
 }
