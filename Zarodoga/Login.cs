@@ -15,6 +15,7 @@ namespace Zarodoga
         public Login()
         {
             InitializeComponent();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -29,7 +30,8 @@ namespace Zarodoga
             {
                 if (Adatbazis.RegisterCheck(User_box.Text) == 0)
                 {
-                    Adatbazis.InsertInto(User_box.Text, Pass_box.Text);
+                    Adatbazis.InsertInto_Player(User_box.Text, Pass_box.Text);
+                    Adatbazis.InsertInto_Loot(User_box.Text);
                     User_box.Clear();
                     Pass_box.Clear();
                 }
@@ -50,6 +52,7 @@ namespace Zarodoga
 
         private void Login_Button_Click(object sender, EventArgs e)
         {
+
             if (Adatbazis.Select(User_box.Text, Pass_box.Text) == 0)
             {
                 string message = "Invalid vagy!";
@@ -58,11 +61,13 @@ namespace Zarodoga
             }
             else
             {
-                Menu form = new Menu();
-                this.Hide();
+                Basic form = new Basic();               
+                this.Hide();             
                 form.ShowDialog();
             }
+            
         }
+
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {

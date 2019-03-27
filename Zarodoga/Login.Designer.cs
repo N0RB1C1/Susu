@@ -122,8 +122,8 @@
         #endregion
 
         private System.Windows.Forms.Button Register_Button;
-        private System.Windows.Forms.TextBox User_box;
-        private System.Windows.Forms.TextBox Pass_box;
+        public System.Windows.Forms.TextBox User_box;
+        public System.Windows.Forms.TextBox Pass_box;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Login_button;

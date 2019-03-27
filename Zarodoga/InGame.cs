@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Zarodoga
@@ -25,17 +20,26 @@ namespace Zarodoga
         private PictureBox Element_Nineth;
         List<Ellenseg> creature = new List<Ellenseg>();
         Ellenseg ellen = new Ellenseg();
-        new List<Color> colours = new List<Color>();
+        List<Color> colours = new List<Color>();
+        public int tp;
 
 
         public InGame()
         {
             InitializeComponent();
             resManager = new ResourceManager("Zarodoga.Enemies", GetType().Assembly);
+            this.FormClosing += Form_Closing;
             colours.Add(Color.Aqua);
             colours.Add(Color.LawnGreen);
             colours.Add(Color.Red);
+            tp = ellen.Level;
 
+        }
+
+        //Alkalamzás bezárása
+        private void Form_Closing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
         // Első elem választása
@@ -136,7 +140,7 @@ namespace Zarodoga
                 };
             }
 
-
+            //Első element
             if (picturebox.Equals(Player_first_element))
             {
                 // Eventek hozzáadása
@@ -149,6 +153,7 @@ namespace Zarodoga
                 this.Controls.Add(Element_Third);
             }
 
+            // Második element
             else if (picturebox.Equals(Player_second_element))
             {
                 // Eventek hozzáadása
@@ -161,6 +166,7 @@ namespace Zarodoga
                 this.Controls.Add(Element_Sixth);
             }
 
+            // Harmadik element
             else if (picturebox.Equals(Player_third_element))
             {
                 // Eventek hozzáadása
@@ -178,14 +184,29 @@ namespace Zarodoga
         private void Element_First_Change_Click(object sender, EventArgs e)
         {
             PictureBox picturebox = (PictureBox)sender;
-
-            Player_first_element.BackColor = picturebox.BackColor;
-            Player_first_element.BackgroundImage = null;
-            this.Controls.Add(Player_first_element);           
+            if (picturebox.BackColor == Color.Aqua)
+            {
+                Player_first_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
+                Enemy.BackgroundImageLayout = ImageLayout.Stretch;
+                Player_first_element.BackColor = Color.Aqua;
+            }
+            else if (picturebox.BackColor == Color.LawnGreen)
+            {
+                Player_first_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
+                Enemy.BackgroundImageLayout = ImageLayout.Stretch;
+                Player_first_element.BackColor = Color.LawnGreen;
+            }
+            else if (picturebox.BackColor == Color.Red)
+            {
+                Player_first_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
+                Enemy.BackgroundImageLayout = ImageLayout.Stretch;
+                Player_first_element.BackColor = Color.Red;
+            }       
+            this.Controls.Add(Player_first_element);
             this.Controls.Remove(Element_First);
             this.Controls.Remove(Element_Second);
             this.Controls.Remove(Element_Third);
-            if (!Player_first_element.BackColor.Equals(Color.White) && !Player_second_element.BackColor.Equals(Color.White) && !Player_third_element.BackColor.Equals(Color.White))
+            if (!Player_first_element.BackColor.Equals(Color.White) && !Player_second_element.BackColor.Equals(Color.White) && !Player_third_element.BackColor.Equals("Elements"))
             {
                 Start_Ingame.Enabled = true;
             }
@@ -193,10 +214,26 @@ namespace Zarodoga
         }
         private void Element_Second_Change_Click(object sender, EventArgs e)
         {
-            PictureBox pictruebox = (PictureBox)sender;
+            PictureBox picturebox = (PictureBox)sender;
 
-            Player_second_element.BackColor = pictruebox.BackColor;
-            Player_second_element.BackgroundImage = null;
+            if (picturebox.BackColor == Color.Aqua)
+            {
+                Player_second_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
+                Enemy.BackgroundImageLayout = ImageLayout.Stretch;
+                Player_second_element.BackColor = Color.Aqua;
+            }
+            else if (picturebox.BackColor == Color.LawnGreen)
+            {
+                Player_second_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
+                Enemy.BackgroundImageLayout = ImageLayout.Stretch;
+                Player_second_element.BackColor = Color.LawnGreen;
+            }
+            else if (picturebox.BackColor == Color.Red)
+            {
+                Player_second_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
+                Enemy.BackgroundImageLayout = ImageLayout.Stretch;
+                Player_second_element.BackColor = Color.Red;
+            }
             this.Controls.Add(Player_second_element);
             this.Controls.Remove(Element_Fourth);
             this.Controls.Remove(Element_Fiveth);
@@ -208,10 +245,26 @@ namespace Zarodoga
         }
         private void Element_Third_Change_Click(object sender, EventArgs e)
         {
-            PictureBox pictruebox = (PictureBox)sender;
+            PictureBox picturebox = (PictureBox)sender;
 
-            Player_third_element.BackColor = pictruebox.BackColor;
-            Player_third_element.BackgroundImage = null;
+            if (picturebox.BackColor == Color.Aqua)
+            {
+                Player_third_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
+                Enemy.BackgroundImageLayout = ImageLayout.Stretch;
+                Player_third_element.BackColor = Color.Aqua;
+            }
+            else if (picturebox.BackColor == Color.LawnGreen)
+            {
+                Player_third_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
+                Enemy.BackgroundImageLayout = ImageLayout.Stretch;
+                Player_third_element.BackColor = Color.LawnGreen;
+            }
+            else if (picturebox.BackColor == Color.Red)
+            {
+                Player_third_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
+                Enemy.BackgroundImageLayout = ImageLayout.Stretch;
+                Player_third_element.BackColor = Color.Red;
+            }
             this.Controls.Add(Player_third_element);
             this.Controls.Remove(Element_Seventh);
             this.Controls.Remove(Element_Eighth);
@@ -232,7 +285,7 @@ namespace Zarodoga
             Enemy_Label.Text = (
                 ellen.Name + "\nEllenség élete: " +
                 Convert.ToString(ellen.Healt_Point) + "\nEllenség szintje:  " +
-                Convert.ToString(ellen.Level) 
+                Convert.ToString(ellen.Level)
                 );
 
             // Ellenség életerő változtatása
@@ -248,90 +301,39 @@ namespace Zarodoga
         // Kör kezdete
         private void Start_Ingame_Click(object sender, EventArgs e)
         {
-            Enemy_behaviour(ellen.Level);
-
-            // Életerő ellenörzés
-            if (Player_hp.Value > 0 && Enemy_hp.Value > 0)
-            {
-
-                // Első elem ellenörzés
-                if (winner(Player_first_element, Enemy_first_element) == 1)
-                {
-                    Player_hp.Value = Player_hp.Value - 10;
-                }
-
-                else if (winner(Player_first_element, Enemy_first_element) == 2)
-                {
-                    Enemy_hp.Value = Enemy_hp.Value - 10;
-                }
-            }
-            // Életerő ellenörzés
-            if (Player_hp.Value > 0 && Enemy_hp.Value > 0)
-            {
-                // Második elem ellenörzése
-                if (winner(Player_second_element, Enemy_second_element) == 1)
-                {
-                    Player_hp.Value = Player_hp.Value - 10;
-                }
-                else if (winner(Player_second_element, Enemy_second_element) == 2)
-                {
-                    Enemy_hp.Value = Enemy_hp.Value - 10;
-                }
-            }
-            // Életerő ellenörzés
-            if (Player_hp.Value > 0 && Enemy_hp.Value > 0)
-            {
-
-                // Harmadik elem ellenörzése
-                if (winner(Player_third_element, Enemy_third_element) == 1)
-                {
-                    Player_hp.Value = Player_hp.Value - 10;
-                }
-
-                else if (winner(Player_third_element, Enemy_third_element) == 2)
-                {
-                    Enemy_hp.Value = Enemy_hp.Value - 10;
-                }
-            }
-            
-            if (Player_hp.Value == 0)
-            {
-                Start_Ingame.Enabled = false;
-                Loot form = new Loot();
-                form.BackColor.Equals(Color.DarkRed);
-                form.Show();                            
-            }
-            else if (Enemy_hp. Value == 0)
-            {
-                Start_Ingame.Enabled = false;
-                Loot form = new Loot();
-                form.BackColor.Equals(Color.DarkGreen);
-                form.Show();
-            }
-
             info_label.Text = (
             "Az ellenség élete: " + Enemy_hp.Value
             + "\nA játékos élete: " + Player_hp.Value
             );
-            
+            Enemy_behaviour(ellen.Level);
+            Start_Ingame.Visible = false;
+            Winner_First.Visible = true;
+            Winner_Second.Visible = true;
+            Winner_Third.Enabled = true;
+            Winner_First.Enabled = true;
+            Winner_Second.Enabled = true;
+            Winner_Third.Visible = true;
+            Spell(Player_first_element, Enemy_first_element);
+            Spell(Player_second_element, Enemy_second_element);
+            Spell(Player_third_element, Enemy_third_element);
+
         }
 
-        // Elemek ellenörzése
-        public int winner(object a, object b)
+        // Elemek ellenörzése / 0 döntetlen / 1 ellenfél nyer / 2 jatékos nyer
+        public int Winner(object a, object b)
         {
             PictureBox player = (PictureBox)a;
             PictureBox enemy = (PictureBox)b;
-            
+            // Döntetlen
             if (player.BackColor == enemy.BackColor)
             {
                 return 0;
             }
-
-            else if (player.BackColor.Equals(Color.Aqua) && enemy.BackColor.Equals(Color.Red))
+            // Ellenfél nyer
+            else if (player.BackColor.Equals(Color.Red) && enemy.BackColor.Equals(Color.Aqua))
             {
-                return 2;
+                return 1;
             }
-
             else if (player.BackColor.Equals(Color.Aqua) && enemy.BackColor.Equals(Color.LawnGreen))
             {
                 return 1;
@@ -341,34 +343,22 @@ namespace Zarodoga
             {
                 return 1;
             }
-
+            // Játékos nyer
             else if (player.BackColor.Equals(Color.LawnGreen) && enemy.BackColor.Equals(Color.Aqua))
             {
                 return 2;
-            }
-
-            else if (player.BackColor.Equals(Color.Red) && enemy.BackColor.Equals(Color.Aqua))
-            {
-                return 1;
             }
 
             else if (player.BackColor.Equals(Color.Red) && enemy.BackColor.Equals(Color.LawnGreen))
             {
                 return 2;
             }
-
-
-            return 0;    
-        }
-
-        private void Round_Tick(object sender, EventArgs e)
-        {
-            int a = 0;
-            a++;
-            if (a > 5)
+            else if (player.BackColor.Equals(Color.Aqua) && enemy.BackColor.Equals(Color.Red))
             {
-                Round.Tag = "Stop";
+                return 2;
             }
+
+            return 0;
         }
 
         // Ellenfél viselkedése
@@ -384,20 +374,29 @@ namespace Zarodoga
                     if (rand == 0)
                     {
                         Enemy_first_element.BackColor = Color.Aqua;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                         Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                         Enemy_third_element.BackColor = Color.Aqua;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                     }
                     else if (rand == 1)
                     {
                         Enemy_first_element.BackColor = Color.LawnGreen;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                         Enemy_second_element.BackColor = Color.LawnGreen;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                         Enemy_third_element.BackColor = Color.LawnGreen;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                     }
                     else
                     {
                         Enemy_first_element.BackColor = Color.Red;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                         Enemy_second_element.BackColor = Color.Red;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                         Enemy_third_element.BackColor = Color.Red;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                     }
                     break;
 
@@ -407,26 +406,38 @@ namespace Zarodoga
                     if (rand == 0)
                     {
                         Enemy_first_element.BackColor = Color.LawnGreen;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                         Enemy_second_element.BackColor = Color.Red;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                         Enemy_third_element.BackColor = Color.Aqua;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                     }
                     else if (rand == 1)
                     {
                         Enemy_first_element.BackColor = Color.LawnGreen;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                         Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                         Enemy_third_element.BackColor = Color.Red;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                     }
                     else if (rand == 2)
                     {
                         Enemy_first_element.BackColor = Color.Red;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                         Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                         Enemy_third_element.BackColor = Color.LawnGreen;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                     }
                     else
                     {
                         Enemy_first_element.BackColor = Color.Red;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                         Enemy_second_element.BackColor = Color.LawnGreen;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                         Enemy_third_element.BackColor = Color.Aqua;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                     }
                     break;
 
@@ -437,78 +448,465 @@ namespace Zarodoga
                     if (rand == 0)
                     {
                         Enemy_first_element.BackColor = Color.Red;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                         Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                         Enemy_third_element.BackColor = Color.Red;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                     }
                     else if (rand == 1)
                     {
                         Enemy_first_element.BackColor = Color.Aqua;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                         Enemy_second_element.BackColor = Color.Red;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                         Enemy_third_element.BackColor = Color.Aqua;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                     }
                     else if (rand == 2)
                     {
                         Enemy_first_element.BackColor = Color.LawnGreen;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                         Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                         Enemy_third_element.BackColor = Color.LawnGreen;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                     }
                     else if (rand == 3)
                     {
                         Enemy_first_element.BackColor = Color.Red;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                         Enemy_second_element.BackColor = Color.Red;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                         Enemy_third_element.BackColor = Color.LawnGreen;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                     }
                     else if (rand == 4)
                     {
                         Enemy_first_element.BackColor = Color.Red;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                         Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                         Enemy_third_element.BackColor = Color.Aqua;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                     }
                     else if (rand == 5)
                     {
                         Enemy_first_element.BackColor = Color.Red;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                         Enemy_second_element.BackColor = Color.LawnGreen;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                         Enemy_third_element.BackColor = Color.LawnGreen;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                     }
                     else
                     {
                         Enemy_first_element.BackColor = Color.LawnGreen;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                         Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                         Enemy_third_element.BackColor = Color.Aqua;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
                     }
                     break;
 
                 case 4:
                     Random r3 = new Random();
-                    rand = r3.Next(0, 2);
+                    rand = r3.Next(0, 5);
                     if (rand == 0)
                     {
                         Enemy_first_element.BackColor = Color.Red;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
                         Enemy_second_element.BackColor = Color.LawnGreen;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                         Enemy_third_element.BackColor = Color.LawnGreen;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
                     }
-
+                    else if (rand == 1)
+                    {
+                        Enemy_first_element.BackColor = Color.Red;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
+                        Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
+                        Enemy_third_element.BackColor = Color.LawnGreen;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
+                    }
+                    else if (rand == 2)
+                    {
+                        Enemy_first_element.BackColor = Color.Red;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
+                        Enemy_second_element.BackColor = Color.LawnGreen;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
+                        Enemy_third_element.BackColor = Color.Aqua;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
+                    }
+                    else if (rand == 3)
+                    {
+                        Enemy_first_element.BackColor = Color.Aqua;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
+                        Enemy_second_element.BackColor = Color.LawnGreen;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
+                        Enemy_third_element.BackColor = Color.Red;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
+                    }
+                    else if (rand == 4)
+                    {
+                        Enemy_first_element.BackColor = Color.Aqua;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
+                        Enemy_second_element.BackColor = Color.Red;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
+                        Enemy_third_element.BackColor = Color.LawnGreen;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
+                    }
+                    else 
+                    {
+                        Enemy_first_element.BackColor = Color.LawnGreen;
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
+                        Enemy_second_element.BackColor = Color.Aqua;
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
+                        Enemy_third_element.BackColor = Color.Red;
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
+                    }
                     break;
 
                 case 5:
-                                   
+
                     Random r4 = new Random();
                     rand = r4.Next(0, 2);
                     Enemy_first_element.BackColor = colours[rand];
+                    if (Enemy_first_element.BackColor == Color.Aqua)
+                    {
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
+                    }
+                    else if (Enemy_first_element.BackColor == Color.LawnGreen)
+                    {
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
+                    }
+                    else if (Enemy_first_element.BackColor == Color.Red)
+                    {
+                        Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
+                    }
                     rand = r4.Next(0, 2);
                     Enemy_second_element.BackColor = colours[rand];
+                    if (Enemy_second_element.BackColor == Color.Aqua)
+                    {
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
+                    }
+                    else if (Enemy_second_element.BackColor == Color.LawnGreen)
+                    {
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
+                    }
+                    else if (Enemy_second_element.BackColor == Color.Red)
+                    {
+                        Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
+                    }
                     rand = r4.Next(0, 2);
                     Enemy_third_element.BackColor = colours[rand];
+                    if (Enemy_third_element.BackColor == Color.Aqua)
+                    {
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Drop;
+                    }
+                    else if (Enemy_third_element.BackColor == Color.LawnGreen)
+                    {
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Leaf;
+                    }
+                    else if (Enemy_third_element.BackColor == Color.Red)
+                    {
+                        Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Fire;
+                    }
                     break;
 
-                default:              
+                default:
                     Enemy_first_element.BackColor = Color.Aqua;
                     Enemy_second_element.BackColor = Color.Aqua;
                     Enemy_third_element.BackColor = Color.Aqua;
                     break;
             }
-                 
+
         }
+
+        //Győztes ellenörzése
+        private void Round_Start(object a)
+        {
+            PictureBox winner = (PictureBox)a;
+            if (winner.Tag.Equals("Fire_spell"))
+            {
+                Player_hp.Value = Player_hp.Value - 10;
+            }
+            else if (winner.Tag.Equals("Frost_spell_res"))
+            {
+                Player_hp.Value = Player_hp.Value - 10;
+            }
+            else if (winner.Tag.Equals("Leaf_spell_res"))
+            {
+                Player_hp.Value = Player_hp.Value - 10;
+            }
+            else if (winner.Tag.Equals("Fire_spell_res"))
+            {
+                Enemy_hp.Value = Enemy_hp.Value - 10;
+            }
+            else if (winner.Tag.Equals("Frost_spell"))
+            {
+                Enemy_hp.Value = Enemy_hp.Value - 10;
+            }
+            else if (winner.Tag.Equals("Leaf_spell"))
+            {
+                Enemy_hp.Value = Enemy_hp.Value - 10;
+            }
+            else
+            {
+                Enemy_hp.Value = Enemy_hp.Value + 0;
+            }
+
+        }
+
+        // Thick event
+        private void Round_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        // Megjeleníti a spelleket
+        private void Spell(object player, object enemy)
+        {
+            PictureBox a = (PictureBox)player;
+            PictureBox b = (PictureBox)enemy;
+            if (Winner(a, b) == 1)
+            {
+                if (a == Player_first_element)
+                {
+                    if (a.BackColor == Color.LawnGreen)
+                    {
+                        Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell;
+                        Winner_First.Tag = "Fire_spell";
+                    }
+                    else if (a.BackColor == Color.Aqua)
+                    {
+                        Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Leaf_spell_res;
+                        Winner_First.Tag = "Leaf_spell_res";
+                    }
+                    else if (a.BackColor == Color.Red)
+                    {
+                        Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Frost_spell_res;
+                        Winner_First.Tag = "Frost_spell_res";
+                    }
+                }
+                else if (a == Player_second_element)
+                {
+                    if (a.BackColor == Color.LawnGreen)
+                    {
+                        Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell;
+                        Winner_Second.Tag = "Fire_spell";
+                    }
+                    else if (a.BackColor == Color.Aqua)
+                    {
+                        Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Leaf_spell_res;
+                        Winner_Second.Tag = "Leaf_spell_res";
+                    }
+                    else if (a.BackColor == Color.Red)
+                    {
+                        Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Frost_spell_res;
+                        Winner_Second.Tag = "Frost_spell_res";
+                    }
+                }
+                else if (a == Player_third_element)
+                {
+                    if (a.BackColor == Color.LawnGreen)
+                    {
+                        Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell;
+                        Winner_Third.Tag = "Fire_spell";
+                    }
+                    else if (a.BackColor == Color.Aqua)
+                    {
+                        Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Leaf_spell_res;
+                        Winner_Third.Tag = "Leaf_spell_res";
+                    }
+                    else if (a.BackColor == Color.Red)
+                    {
+                        Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Frost_spell_res;
+                        Winner_Third.Tag = "Frost_spell_res";
+                    }
+                }
+            }
+            else if (Winner(a,b) == 2)
+            {
+                if (a == Player_first_element)
+                {
+                    if (a.BackColor == Color.LawnGreen)
+                    {
+                        Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell_res;
+                        Winner_First.Tag = "Fire_spell_res";
+                    }
+                    else if (a.BackColor == Color.Aqua)
+                    {
+                        Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Leaf_spell;
+                        Winner_First.Tag = "Leaf_spell";
+                    }
+                    else if (a.BackColor == Color.Red)
+                    {
+                        Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Frost_spell;
+                        Winner_First.Tag = "Frost_spell";
+                    }
+                }
+                else if (a == Player_second_element)
+                {
+                    if (a.BackColor == Color.LawnGreen)
+                    {
+                        Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell_res;
+                        Winner_Second.Tag = "Fire_spell_res";
+                    }
+                    else if (a.BackColor == Color.Aqua)
+                    {
+                        Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Leaf_spell;
+                        Winner_Second.Tag = "Leaf_spell";
+                    }
+                    else if (a.BackColor == Color.Red)
+                    {
+                        Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Frost_spell;
+                        Winner_Second.Tag = "Frost_spell";
+                    }
+                }
+                else if (a == Player_third_element)
+                {
+                    if (a.BackColor == Color.LawnGreen)
+                    {
+                        Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell_res;
+                        Winner_Third.Tag = "Fire_spell_res";
+                    }
+                    else if (a.BackColor == Color.Aqua)
+                    {
+                        Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Leaf_spell;
+                        Winner_Third.Tag = "Leaf_spell";
+                    }
+                    else if (a.BackColor == Color.Red)
+                    {
+                        Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Frost_spell;
+                        Winner_Third.Tag = "Frost_spell";
+                    }
+                }
+            }
+            else
+            {
+                if (a == Player_first_element)
+                {
+                    Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Draw;
+                    Winner_First.Tag = "Draw";
+                }
+                else if (a == Player_second_element)
+                {
+                    Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Draw;
+                    Winner_Second.Tag = "Draw";
+                }
+                if (a == Player_third_element)
+                {
+                    Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Draw;
+                    Winner_Third.Tag = "Draw";
+                }
+            }
+
+        }
+
+        // Életerő ellenörzés
+        private bool Hp_Check()
+        {
+            bool win = true;
+            if (Player_hp.Value == 0)
+            {
+                win = false;
+                return win;
+            }
+            else if (Enemy_hp.Value == 0)
+            {
+                win = false;
+                return win;
+            }
+            return win;
+        }
+
+        // Loot ablak nyitása
+        private void Loot_Form()
+        {
+            bool win = false;
+            // Lose
+            if (Player_hp.Value == 0)
+            {
+                Start_Ingame.Enabled = false;
+                Loot form = new Loot();
+                form.tapasztalatipont = ellen.Level * 5;
+                form.End.Text = "Vereség";
+                form.Show();
+
+            }
+            // Victory
+            else if (Enemy_hp.Value == 0)
+            {
+
+                Start_Ingame.Enabled = false;
+                Loot form = new Loot();
+                form.tapasztalatipont = ellen.Level * 10;
+                form.End.Text = "Győzelem";
+                form.Show();
+
+            }
+        }
+
+        // Spell katt
+        private void Winner_First_Click(object sender, EventArgs e)
+        {
+            if (Hp_Check() == true)
+            {
+                Round_Start(Winner_First);
+                Winner_First.Enabled = false;
+                Winner_First.Visible = false;
+
+                if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
+                {
+                    Start_Ingame.Visible = true;
+                    Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                    Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                    Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                }
+            }
+            else { Loot_Form(); }
+        }
+
+        private void Winner_Second_Click(object sender, EventArgs e)
+        {
+            if (Hp_Check() == true)
+            {
+                Round_Start(Winner_Second);
+                Winner_Second.Enabled = false;
+                Winner_Second.Visible = false;
+                if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
+                {
+                    Start_Ingame.Visible = true;
+                    Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                    Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                    Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                }
+            }
+            else { Loot_Form(); }
+        }
+
+        private void Winner_Third_Click(object sender, EventArgs e)
+        {
+            if (Hp_Check() == true)
+            {
+                Round_Start(Winner_Third);
+                Winner_Third.Enabled = false;
+                Winner_Third.Visible = false;
+                if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
+                {
+                    Start_Ingame.Visible = true;
+                    Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                    Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                    Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                }
+            }
+            else { Loot_Form(); }
+        }
+
+
         // change is good
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Zarodoga
 {
-    partial class Menu
+    partial class Basic
     {
         /// <summary>
         /// Required designer variable.
@@ -32,6 +32,10 @@
             this.Options_Button = new System.Windows.Forms.Button();
             this.Start_Button = new System.Windows.Forms.Button();
             this.Continue_Button = new System.Windows.Forms.Button();
+            this.Player_info = new System.Windows.Forms.Label();
+            this.Szint = new System.Windows.Forms.ProgressBar();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.Arany = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Exit_Button
@@ -70,7 +74,7 @@
             // 
             this.Continue_Button.Enabled = false;
             this.Continue_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Continue_Button.Location = new System.Drawing.Point(230, 12);
+            this.Continue_Button.Location = new System.Drawing.Point(230, 145);
             this.Continue_Button.Name = "Continue_Button";
             this.Continue_Button.Size = new System.Drawing.Size(165, 50);
             this.Continue_Button.TabIndex = 1;
@@ -78,22 +82,67 @@
             this.Continue_Button.UseVisualStyleBackColor = true;
             this.Continue_Button.Visible = false;
             // 
-            // Menu
+            // Player_info
+            // 
+            this.Player_info.BackColor = System.Drawing.Color.LightGray;
+            this.Player_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Player_info.Location = new System.Drawing.Point(12, 9);
+            this.Player_info.Name = "Player_info";
+            this.Player_info.Size = new System.Drawing.Size(212, 26);
+            this.Player_info.TabIndex = 2;
+            this.Player_info.Text = "Üdvözöllek: ";
+            this.Player_info.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Szint
+            // 
+            this.Szint.Location = new System.Drawing.Point(401, 39);
+            this.Szint.Name = "Szint";
+            this.Szint.Size = new System.Drawing.Size(214, 23);
+            this.Szint.Step = 1;
+            this.Szint.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.Szint.TabIndex = 3;
+            // 
+            // lbl1
+            // 
+            this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(238)));
+            this.lbl1.Location = new System.Drawing.Point(401, 12);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(214, 23);
+            this.lbl1.TabIndex = 4;
+            this.lbl1.Text = "Tapasztalati szint: ";
+            this.lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Arany
+            // 
+            this.Arany.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(238)));
+            this.Arany.Location = new System.Drawing.Point(13, 39);
+            this.Arany.Name = "Arany";
+            this.Arany.Size = new System.Drawing.Size(211, 23);
+            this.Arany.TabIndex = 5;
+            this.Arany.Text = "Arany: ";
+            this.Arany.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Basic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Zarodoga.Properties.Resources.Alchemy_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(627, 608);
+            this.Controls.Add(this.Arany);
+            this.Controls.Add(this.lbl1);
+            this.Controls.Add(this.Szint);
+            this.Controls.Add(this.Player_info);
             this.Controls.Add(this.Continue_Button);
             this.Controls.Add(this.Start_Button);
             this.Controls.Add(this.Options_Button);
             this.Controls.Add(this.Exit_Button);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Menu";
+            this.Name = "Basic";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.Basic_Load);
             this.ResumeLayout(false);
 
         }
@@ -104,5 +153,9 @@
         private System.Windows.Forms.Button Options_Button;
         private System.Windows.Forms.Button Start_Button;
         private System.Windows.Forms.Button Continue_Button;
+        public System.Windows.Forms.Label Player_info;
+        public System.Windows.Forms.ProgressBar Szint;
+        private System.Windows.Forms.Label lbl1;
+        public System.Windows.Forms.Label Arany;
     }
 }
