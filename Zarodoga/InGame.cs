@@ -206,7 +206,7 @@ namespace Zarodoga
             this.Controls.Remove(Element_First);
             this.Controls.Remove(Element_Second);
             this.Controls.Remove(Element_Third);
-            if (!Player_first_element.BackColor.Equals(Color.White) && !Player_second_element.BackColor.Equals(Color.White) && !Player_third_element.BackColor.Equals("Elements"))
+            if (!Player_first_element.BackColor.Equals(Color.White) && !Player_second_element.BackColor.Equals(Color.White) && !Player_third_element.BackColor.Equals(Color.White))
             {
                 Start_Ingame.Enabled = true;
             }
@@ -320,44 +320,42 @@ namespace Zarodoga
         }
 
         // Elemek ellenörzése / 0 döntetlen / 1 ellenfél nyer / 2 jatékos nyer
-        public int Winner(object a, object b)
+        public int Winner(object player, object enemy)
         {
-            PictureBox player = (PictureBox)a;
-            PictureBox enemy = (PictureBox)b;
+            PictureBox playerbox = (PictureBox)player;
+            PictureBox enemybox = (PictureBox)enemy;
             // Döntetlen
-            if (player.BackColor == enemy.BackColor)
+            if (playerbox.BackColor == enemybox.BackColor)
             {
                 return 0;
             }
             // Ellenfél nyer
-            else if (player.BackColor.Equals(Color.Red) && enemy.BackColor.Equals(Color.Aqua))
+            else if (playerbox.BackColor.Equals(Color.Red) && enemybox.BackColor.Equals(Color.Aqua))
             {
                 return 1;
             }
-            else if (player.BackColor.Equals(Color.Aqua) && enemy.BackColor.Equals(Color.LawnGreen))
+            else if (playerbox.BackColor.Equals(Color.Aqua) && enemybox.BackColor.Equals(Color.LawnGreen))
             {
                 return 1;
             }
 
-            else if (player.BackColor.Equals(Color.LawnGreen) && enemy.BackColor.Equals(Color.Red))
+            else if (playerbox.BackColor.Equals(Color.LawnGreen) && enemybox.BackColor.Equals(Color.Red))
             {
                 return 1;
             }
             // Játékos nyer
-            else if (player.BackColor.Equals(Color.LawnGreen) && enemy.BackColor.Equals(Color.Aqua))
+            else if (playerbox.BackColor.Equals(Color.LawnGreen) && enemybox.BackColor.Equals(Color.Aqua))
             {
                 return 2;
             }
-
-            else if (player.BackColor.Equals(Color.Red) && enemy.BackColor.Equals(Color.LawnGreen))
+            else if (playerbox.BackColor.Equals(Color.Red) && enemybox.BackColor.Equals(Color.LawnGreen))
             {
                 return 2;
             }
-            else if (player.BackColor.Equals(Color.Aqua) && enemy.BackColor.Equals(Color.Red))
+            else if (playerbox.BackColor.Equals(Color.Aqua) && enemybox.BackColor.Equals(Color.Red))
             {
                 return 2;
             }
-
             return 0;
         }
 
@@ -369,8 +367,7 @@ namespace Zarodoga
 
                 case 1:
                     Random r0 = new Random();
-                    int rand;
-                    rand = r0.Next(0, 3);
+                    int rand = r0.Next(0, 3);
                     if (rand == 0)
                     {
                         Enemy_first_element.BackColor = Color.Aqua;
@@ -626,9 +623,9 @@ namespace Zarodoga
         }
 
         //Győztes ellenörzése
-        private void Round_Start(object a)
+        private void Round_Start(object spell)
         {
-            PictureBox winner = (PictureBox)a;
+            PictureBox winner = (PictureBox)spell;
             if (winner.Tag.Equals("Fire_spell"))
             {
                 Player_hp.Value = Player_hp.Value - 10;
@@ -669,135 +666,135 @@ namespace Zarodoga
         // Megjeleníti a spelleket
         private void Spell(object player, object enemy)
         {
-            PictureBox a = (PictureBox)player;
-            PictureBox b = (PictureBox)enemy;
-            if (Winner(a, b) == 1)
+            PictureBox playerbox = (PictureBox)player;
+            PictureBox enemybox = (PictureBox)enemy;
+            if (Winner(playerbox, enemybox) == 1)
             {
-                if (a == Player_first_element)
+                if (playerbox == Player_first_element)
                 {
-                    if (a.BackColor == Color.LawnGreen)
+                    if (playerbox.BackColor == Color.LawnGreen)
                     {
                         Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell;
                         Winner_First.Tag = "Fire_spell";
                     }
-                    else if (a.BackColor == Color.Aqua)
+                    else if (playerbox.BackColor == Color.Aqua)
                     {
                         Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Leaf_spell_res;
                         Winner_First.Tag = "Leaf_spell_res";
                     }
-                    else if (a.BackColor == Color.Red)
+                    else if (playerbox.BackColor == Color.Red)
                     {
                         Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Frost_spell_res;
                         Winner_First.Tag = "Frost_spell_res";
                     }
                 }
-                else if (a == Player_second_element)
+                else if (playerbox == Player_second_element)
                 {
-                    if (a.BackColor == Color.LawnGreen)
+                    if (playerbox.BackColor == Color.LawnGreen)
                     {
                         Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell;
                         Winner_Second.Tag = "Fire_spell";
                     }
-                    else if (a.BackColor == Color.Aqua)
+                    else if (playerbox.BackColor == Color.Aqua)
                     {
                         Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Leaf_spell_res;
                         Winner_Second.Tag = "Leaf_spell_res";
                     }
-                    else if (a.BackColor == Color.Red)
+                    else if (playerbox.BackColor == Color.Red)
                     {
                         Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Frost_spell_res;
                         Winner_Second.Tag = "Frost_spell_res";
                     }
                 }
-                else if (a == Player_third_element)
+                else if (playerbox == Player_third_element)
                 {
-                    if (a.BackColor == Color.LawnGreen)
+                    if (playerbox.BackColor == Color.LawnGreen)
                     {
                         Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell;
                         Winner_Third.Tag = "Fire_spell";
                     }
-                    else if (a.BackColor == Color.Aqua)
+                    else if (playerbox.BackColor == Color.Aqua)
                     {
                         Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Leaf_spell_res;
                         Winner_Third.Tag = "Leaf_spell_res";
                     }
-                    else if (a.BackColor == Color.Red)
+                    else if (playerbox.BackColor == Color.Red)
                     {
                         Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Frost_spell_res;
                         Winner_Third.Tag = "Frost_spell_res";
                     }
                 }
             }
-            else if (Winner(a,b) == 2)
+            else if (Winner(playerbox,enemybox) == 2)
             {
-                if (a == Player_first_element)
+                if (player == Player_first_element)
                 {
-                    if (a.BackColor == Color.LawnGreen)
-                    {
-                        Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell_res;
-                        Winner_First.Tag = "Fire_spell_res";
-                    }
-                    else if (a.BackColor == Color.Aqua)
+                    if (playerbox.BackColor == Color.LawnGreen)
                     {
                         Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Leaf_spell;
                         Winner_First.Tag = "Leaf_spell";
                     }
-                    else if (a.BackColor == Color.Red)
+                    else if (playerbox.BackColor == Color.Aqua)
                     {
                         Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Frost_spell;
                         Winner_First.Tag = "Frost_spell";
                     }
-                }
-                else if (a == Player_second_element)
-                {
-                    if (a.BackColor == Color.LawnGreen)
+                    else if (playerbox.BackColor == Color.Red)
                     {
-                        Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell_res;
-                        Winner_Second.Tag = "Fire_spell_res";
+                        Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell_res;
+                        Winner_First.Tag = "Fire_spell_res";
                     }
-                    else if (a.BackColor == Color.Aqua)
+                }
+                else if (playerbox == Player_second_element)
+                {
+                    if (playerbox.BackColor == Color.LawnGreen)
                     {
                         Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Leaf_spell;
                         Winner_Second.Tag = "Leaf_spell";
                     }
-                    else if (a.BackColor == Color.Red)
+                    else if (playerbox.BackColor == Color.Aqua)
                     {
                         Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Frost_spell;
                         Winner_Second.Tag = "Frost_spell";
                     }
-                }
-                else if (a == Player_third_element)
-                {
-                    if (a.BackColor == Color.LawnGreen)
+                    else if (playerbox.BackColor == Color.Red)
                     {
-                        Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell_res;
-                        Winner_Third.Tag = "Fire_spell_res";
+                        Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell_res;
+                        Winner_Second.Tag = "Fire_spell_res";
                     }
-                    else if (a.BackColor == Color.Aqua)
+                }
+                else if (playerbox == Player_third_element)
+                {
+                    if (playerbox.BackColor == Color.LawnGreen)
                     {
                         Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Leaf_spell;
                         Winner_Third.Tag = "Leaf_spell";
                     }
-                    else if (a.BackColor == Color.Red)
+                    else if (playerbox.BackColor == Color.Aqua)
                     {
                         Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Frost_spell;
                         Winner_Third.Tag = "Frost_spell";
+                    }
+                    else if (playerbox.BackColor == Color.Red)
+                    {
+                        Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Fire_spell_res;
+                        Winner_Third.Tag = "Fire_spell_res";
                     }
                 }
             }
             else
             {
-                if (a == Player_first_element)
+                if (playerbox == Player_first_element)
                 {
                     Winner_First.BackgroundImage = Zarodoga.Properties.Resources.Draw;
                     Winner_First.Tag = "Draw";
                 }
-                else if (a == Player_second_element)
+                else if (playerbox == Player_second_element)
                 {
                     Winner_Second.BackgroundImage = Zarodoga.Properties.Resources.Draw;
                     Winner_Second.Tag = "Draw";
                 }
-                if (a == Player_third_element)
+                if (playerbox == Player_third_element)
                 {
                     Winner_Third.BackgroundImage = Zarodoga.Properties.Resources.Draw;
                     Winner_Third.Tag = "Draw";
@@ -826,7 +823,6 @@ namespace Zarodoga
         // Loot ablak nyitása
         private void Loot_Form()
         {
-            bool win = false;
             // Lose
             if (Player_hp.Value == 0)
             {
@@ -853,57 +849,58 @@ namespace Zarodoga
         // Spell katt
         private void Winner_First_Click(object sender, EventArgs e)
         {
-            if (Hp_Check() == true)
-            {
-                Round_Start(Winner_First);
-                Winner_First.Enabled = false;
-                Winner_First.Visible = false;
+            Round_Start(Winner_First);
+            Winner_First.Enabled = false;
+            Winner_First.Visible = false;
 
-                if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
-                {
-                    Start_Ingame.Visible = true;
-                    Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
-                    Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
-                    Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
-                }
+            if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
+            {
+                Start_Ingame.Visible = true;
+                Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
             }
-            else { Loot_Form(); }
+            if (Hp_Check() == false)
+            {
+                Loot_Form();
+            }
         }
 
         private void Winner_Second_Click(object sender, EventArgs e)
         {
-            if (Hp_Check() == true)
+            Round_Start(Winner_Second);
+            Winner_Second.Enabled = false;
+            Winner_Second.Visible = false;
+            if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
             {
-                Round_Start(Winner_Second);
-                Winner_Second.Enabled = false;
-                Winner_Second.Visible = false;
-                if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
-                {
-                    Start_Ingame.Visible = true;
-                    Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
-                    Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
-                    Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
-                }
+                Start_Ingame.Visible = true;
+                Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
             }
-            else { Loot_Form(); }
+
+            if (Hp_Check() == false)
+            {
+                Loot_Form();
+            }
         }
 
         private void Winner_Third_Click(object sender, EventArgs e)
         {
-            if (Hp_Check() == true)
+            Round_Start(Winner_Third);
+            Winner_Third.Enabled = false;
+            Winner_Third.Visible = false;
+            if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
             {
-                Round_Start(Winner_Third);
-                Winner_Third.Enabled = false;
-                Winner_Third.Visible = false;
-                if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
-                {
-                    Start_Ingame.Visible = true;
-                    Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
-                    Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
-                    Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
-                }
+                Start_Ingame.Visible = true;
+                Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
+                Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
             }
-            else { Loot_Form(); }
+            if (Hp_Check() == false)
+            {
+                Loot_Form();
+            }
         }
 
 
