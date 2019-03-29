@@ -176,7 +176,9 @@ namespace Zarodoga
                 "(@param1)";
                 command = new MySqlCommand(sql, kapcsolodas);
                 command.Parameters.Add("@param1", MySqlDbType.Text).Value = username;
-                command.ExecuteNonQuery();
+                int asd = (int)command.ExecuteScalar();
+                kapcsolodas.Close();
+                return asd;
                 DataTable dt = new DataTable();
                 MySqlDataAdapter da = new MySqlDataAdapter(command);
                 da.Fill(dt);
@@ -203,19 +205,17 @@ namespace Zarodoga
                 "(@param1)";
                 command = new MySqlCommand(sql, kapcsolodas);
                 command.Parameters.Add("@param1", MySqlDbType.Text).Value = id;
-                command.ExecuteNonQuery();
+                int asd = (int)command.ExecuteScalar();
+                kapcsolodas.Close();
+                return asd;
                 DataTable dt = new DataTable();
                 MySqlDataAdapter da = new MySqlDataAdapter(command);
                 da.Fill(dt);
                 i = Convert.ToInt32(dt.Rows[0]);
 
             }
-            catch (Exception e) { Console.WriteLine(e); }
-            if (i > 0)
-            {
-                return i;
-            }
-            else return 0;
+            catch (Exception e) { throw; }
+            
         }
 
         //Select player tapasztalati pont
@@ -317,5 +317,6 @@ namespace Zarodoga
             }
             catch (Exception e) { Console.WriteLine(e); }
         }
+
     }
 }

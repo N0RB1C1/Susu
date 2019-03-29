@@ -43,7 +43,7 @@
             this.Register_Button.Location = new System.Drawing.Point(124, 144);
             this.Register_Button.Name = "Register_Button";
             this.Register_Button.Size = new System.Drawing.Size(150, 25);
-            this.Register_Button.TabIndex = 0;
+            this.Register_Button.TabIndex = 2;
             this.Register_Button.Text = "Regisztráció";
             this.Register_Button.UseVisualStyleBackColor = true;
             this.Register_Button.Click += new System.EventHandler(this.Register_Button_Click);
@@ -53,12 +53,13 @@
             this.User_box.Location = new System.Drawing.Point(124, 62);
             this.User_box.Name = "User_box";
             this.User_box.Size = new System.Drawing.Size(150, 20);
-            this.User_box.TabIndex = 1;
+            this.User_box.TabIndex = 0;
             // 
             // Pass_box
             // 
             this.Pass_box.Location = new System.Drawing.Point(124, 118);
             this.Pass_box.Name = "Pass_box";
+            this.Pass_box.PasswordChar = '*';
             this.Pass_box.Size = new System.Drawing.Size(150, 20);
             this.Pass_box.TabIndex = 1;
             // 

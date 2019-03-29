@@ -41,19 +41,27 @@ namespace Zarodoga
 
         private void Basic_Load(object sender, EventArgs e)
         {
-            Login form = new Login();
+            Login form = null;
+            foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType().ToString() == "Zarodoga.Login")
+                {
+                    form = (Login)item;
+                }
+            }
             int i = Adatbazis.Select_Player_Id(form.User_box.Text);
-            p = new Player(form.User_box.Text,
-                Adatbazis.Select_Player_Id(form.User_box.Text),
-                Adatbazis.Select_Player_Arany(i),
-                Adatbazis.Select_Player_Tapasztalati_Pont(i),
-                Adatbazis.Select_Player_Jogosultsag(i),
-                Adatbazis.Select_Player_Palya(i)
-                );
-            Arany.Text += p.arany;
+            //p = new Player(form.User_box.Text,
+            //    Adatbazis.Select_Player_Id(form.User_box.Text),
+            //    Adatbazis.Select_Player_Arany(i),
+            //    Adatbazis.Select_Player_Tapasztalati_Pont(i),
+            //    Adatbazis.Select_Player_Jogosultsag(i),
+            //    Adatbazis.Select_Player_Palya(i)
+            //    );
+            MessageBox.Show(Adatbazis.Select_Player_Arany(i) + "");
+            Arany.Text += Adatbazis.Select_Player_Arany(i);
             Loot form2 = new Loot();
             Szint.Value = form2.tapasztalatipont;
-            Player_info.Text += p.username;
+            //Player_info.Text += p.username;
         }
 
 
