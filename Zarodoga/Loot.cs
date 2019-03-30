@@ -39,8 +39,16 @@ namespace Zarodoga
 
         private void Pick_up_loot_Click(object sender, EventArgs e)
         {
-            Login form = new Login();
-            Adatbazis.Update(Adatbazis.Select_Player_Id(form.User_box.Text), tapasztalatipont);
+            Login form = null;
+            foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType().ToString() == "Zarodoga.Login")
+                {
+                    form = (Login)item;
+                }
+            }
+            Adatbazis.Update_Arany(Adatbazis.Select_Player_Id(form.User_box.Text), arany);
+            Adatbazis.Update_Tapasztalat(Adatbazis.Select_Player_Id(form.User_box.Text), tapasztalatipont);
             this.Hide();
             InGame.ActiveForm.Hide();
             Basic form2 = new Basic();

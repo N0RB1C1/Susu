@@ -167,7 +167,6 @@ namespace Zarodoga
         //Select player id
         public static int Select_Player_Id(string username)
         {
-            int i = 0;
             try
             {
                 kapcsolodas.Open();
@@ -176,27 +175,16 @@ namespace Zarodoga
                 "(@param1)";
                 command = new MySqlCommand(sql, kapcsolodas);
                 command.Parameters.Add("@param1", MySqlDbType.Text).Value = username;
-                int asd = (int)command.ExecuteScalar();
+                int id = (int)command.ExecuteScalar();
                 kapcsolodas.Close();
-                return asd;
-                DataTable dt = new DataTable();
-                MySqlDataAdapter da = new MySqlDataAdapter(command);
-                da.Fill(dt);
-                i = Convert.ToInt32(dt.Rows[0]);
-                
+                return id;                
             }
-            catch (Exception e) { Console.WriteLine(e);}
-            if (i > 0)
-            {
-                return i;
-            }
-            else return 0;
+            catch (Exception e) { throw e; }
         }
 
         //Select player arany
         public static int Select_Player_Arany(int id)
         {
-            int i = 0;
             try
             {
                 kapcsolodas.Open();
@@ -205,23 +193,17 @@ namespace Zarodoga
                 "(@param1)";
                 command = new MySqlCommand(sql, kapcsolodas);
                 command.Parameters.Add("@param1", MySqlDbType.Text).Value = id;
-                int asd = (int)command.ExecuteScalar();
+                int arany = (int)command.ExecuteScalar();
                 kapcsolodas.Close();
-                return asd;
-                DataTable dt = new DataTable();
-                MySqlDataAdapter da = new MySqlDataAdapter(command);
-                da.Fill(dt);
-                i = Convert.ToInt32(dt.Rows[0]);
-
+                return arany;
             }
-            catch (Exception e) { throw; }
+            catch (Exception e) { throw e; }
             
         }
 
         //Select player tapasztalati pont
         public static int Select_Player_Tapasztalati_Pont(int id)
         {
-            int i = 0;
             try
             {
                 kapcsolodas.Open();
@@ -230,52 +212,36 @@ namespace Zarodoga
                 "(@param1)";
                 command = new MySqlCommand(sql, kapcsolodas);
                 command.Parameters.Add("@param1", MySqlDbType.Text).Value = id;
-                command.ExecuteNonQuery();
-                DataTable dt = new DataTable();
-                MySqlDataAdapter da = new MySqlDataAdapter(command);
-                da.Fill(dt);
-                i = Convert.ToInt32(dt.Rows[0]);
+                int tapasztalatipont = (int)command.ExecuteScalar();
+                kapcsolodas.Close();
+                return tapasztalatipont;
 
             }
-            catch (Exception e) { Console.WriteLine(e); }
-            if (i > 0)
-            {
-                return i;
-            }
-            else return 0;
+            catch (Exception e) { throw e; }
         }
 
         //Select player jogosultsag
         public static int Select_Player_Jogosultsag(int id)
         {
-            int i = 0;
             try
             {
                 kapcsolodas.Open();
                 command = kapcsolodas.CreateCommand();
-                string sql = "SELECT jogosulatsag FROM loot WHERE player_id = " +
+                string sql = "SELECT jogosultsag FROM loot WHERE player_id = " +
                 "(@param1)";
                 command = new MySqlCommand(sql, kapcsolodas);
                 command.Parameters.Add("@param1", MySqlDbType.Text).Value = id;
-                command.ExecuteNonQuery();
-                DataTable dt = new DataTable();
-                MySqlDataAdapter da = new MySqlDataAdapter(command);
-                da.Fill(dt);
-                i = Convert.ToInt32(dt.Rows[0]);
+                int jogosultsag = (int)command.ExecuteScalar();
+                kapcsolodas.Close();
+                return jogosultsag;
 
             }
-            catch (Exception e) { Console.WriteLine(e); }
-            if (i > 0)
-            {
-                return i;
-            }
-            else return 0;
+            catch (Exception e) { throw e; }
         }
 
-        //Select player id
+        //Select player palya
         public static int Select_Player_Palya(int id)
         {
-            int i = 0;
             try
             {
                 kapcsolodas.Open();
@@ -284,30 +250,40 @@ namespace Zarodoga
                 "(@param1)";
                 command = new MySqlCommand(sql, kapcsolodas);
                 command.Parameters.Add("@param1", MySqlDbType.Text).Value = id;
-                command.ExecuteNonQuery();
-                DataTable dt = new DataTable();
-                MySqlDataAdapter da = new MySqlDataAdapter(command);
-                da.Fill(dt);
-                i = Convert.ToInt32(dt.Rows[0]);
+                int palya = (int)command.ExecuteScalar();
+                kapcsolodas.Close();
+                return palya;
 
             }
-            catch (Exception e) { Console.WriteLine(e); }
-            if (i > 0)
-            {
-                return i;
-            }
-            else return 0;
+            catch (Exception e) { throw e; }
         }
 
         // Tapasztalati szint hozzáadása
-        public static void Update(int id, int tapasztalat)
+        public static void Update_Tapasztalat(int id, int tapasztalat)
         {
-            //Fő tábla kitöltése
             try
             {
                 kapcsolodas.Open();
                 command = kapcsolodas.CreateCommand();
-                string sql = "UPDATE loot SET tapasztalati_pont += @param1 WHERE loot.player_id = @param2;";
+                string sql = "UPDATE loot SET tapasztalati_pont = loot.tapasztalati_pont + @param1 WHERE loot.player_id = @param2; ";
+                MySqlCommand cmd = new MySqlCommand(sql, kapcsolodas);
+                cmd.Parameters.Add("@param1", MySqlDbType.Text).Value = tapasztalat;
+                cmd.Parameters.Add("@param2", MySqlDbType.Text).Value = id;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteNonQuery();
+                kapcsolodas.Close();
+            }
+            catch (Exception e) { Console.WriteLine(e); }
+        }
+
+        // Arany hozzáadása
+        public static void Update_Arany(int id, int tapasztalat)
+        {
+            try
+            {
+                kapcsolodas.Open();
+                command = kapcsolodas.CreateCommand();
+                string sql = "UPDATE loot SET arany = loot.arany + @param1 WHERE loot.player_id = @param2; ";
                 MySqlCommand cmd = new MySqlCommand(sql, kapcsolodas);
                 cmd.Parameters.Add("@param1", MySqlDbType.Text).Value = tapasztalat;
                 cmd.Parameters.Add("@param2", MySqlDbType.Text).Value = id;

@@ -279,14 +279,9 @@ namespace Zarodoga
         private void InGame_Load(object sender, EventArgs e)
         {
             Start_Ingame.Enabled = false;
-
+            Gyors_btn.Enabled = false;
             //Véletlenszerű ellenség
             creature.Add(ellen);
-            Enemy_Label.Text = (
-                ellen.Name + "\nEllenség élete: " +
-                Convert.ToString(ellen.Healt_Point) + "\nEllenség szintje:  " +
-                Convert.ToString(ellen.Level)
-                );
 
             // Ellenség életerő változtatása
             Enemy_hp.Maximum = ellen.Healt_Point;
@@ -313,6 +308,7 @@ namespace Zarodoga
             Winner_First.Enabled = true;
             Winner_Second.Enabled = true;
             Winner_Third.Visible = true;
+            Gyors_btn.Enabled = true;
             Spell(Player_first_element, Enemy_first_element);
             Spell(Player_second_element, Enemy_second_element);
             Spell(Player_third_element, Enemy_third_element);
@@ -856,6 +852,7 @@ namespace Zarodoga
             if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
             {
                 Start_Ingame.Visible = true;
+                Gyors_btn.Enabled = false;
                 Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
                 Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
                 Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
@@ -874,6 +871,7 @@ namespace Zarodoga
             if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
             {
                 Start_Ingame.Visible = true;
+                Gyors_btn.Enabled = false;
                 Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
                 Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
                 Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
@@ -889,10 +887,11 @@ namespace Zarodoga
         {
             Round_Start(Winner_Third);
             Winner_Third.Enabled = false;
-            Winner_Third.Visible = false;
+            Winner_Third.Visible = false;          
             if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
             {
                 Start_Ingame.Visible = true;
+                Gyors_btn.Enabled = false;
                 Enemy_first_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
                 Enemy_second_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
                 Enemy_third_element.BackgroundImage = Zarodoga.Properties.Resources.Elements_rotate;
@@ -901,6 +900,29 @@ namespace Zarodoga
             {
                 Loot_Form();
             }
+        }
+
+        private void Gyors_btn_Click(object sender, EventArgs e)
+        {
+            if (Hp_Check() == true)
+            {
+                Winner_First_Click(sender, e);
+            }
+            else Loot_Form();
+
+            if (Hp_Check() == true)
+            {
+                Winner_Second_Click(sender, e); ;
+            }
+            else Loot_Form();
+
+            if (Hp_Check() == true)
+            {
+                Winner_Third_Click(sender, e);
+            }
+            Loot_Form();
+
+            Gyors_btn.Enabled = false;
         }
 
 
