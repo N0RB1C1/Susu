@@ -186,10 +186,6 @@ namespace Zarodoga
             this.info_label.Size = new System.Drawing.Size(100, 115);
             this.info_label.TabIndex = 5;
             // 
-            // Round
-            // 
-            this.Round.Tick += new System.EventHandler(this.Round_Tick);
-            // 
             // Winner_First
             // 
             this.Winner_First.BackColor = System.Drawing.Color.Transparent;

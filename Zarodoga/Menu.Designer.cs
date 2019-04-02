@@ -31,11 +31,11 @@
             this.Exit_Button_Btn = new System.Windows.Forms.Button();
             this.Options_Button = new System.Windows.Forms.Button();
             this.Start_Button = new System.Windows.Forms.Button();
-            this.Continue_Button = new System.Windows.Forms.Button();
             this.Player_infolbl = new System.Windows.Forms.Label();
             this.Szintbr = new System.Windows.Forms.ProgressBar();
             this.Tapasztalati_szintlbl = new System.Windows.Forms.Label();
             this.Aranylbl = new System.Windows.Forms.Label();
+            this.Arany_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Exit_Button_Btn
@@ -44,7 +44,7 @@
             this.Exit_Button_Btn.Location = new System.Drawing.Point(230, 503);
             this.Exit_Button_Btn.Name = "Exit_Button_Btn";
             this.Exit_Button_Btn.Size = new System.Drawing.Size(165, 50);
-            this.Exit_Button_Btn.TabIndex = 0;
+            this.Exit_Button_Btn.TabIndex = 2;
             this.Exit_Button_Btn.Text = "Exit";
             this.Exit_Button_Btn.UseVisualStyleBackColor = true;
             this.Exit_Button_Btn.Click += new System.EventHandler(this.Exit_Button_Click);
@@ -58,6 +58,7 @@
             this.Options_Button.TabIndex = 1;
             this.Options_Button.Text = "Options";
             this.Options_Button.UseVisualStyleBackColor = true;
+            this.Options_Button.Click += new System.EventHandler(this.Options_Button_Click);
             // 
             // Start_Button
             // 
@@ -65,22 +66,10 @@
             this.Start_Button.Location = new System.Drawing.Point(230, 261);
             this.Start_Button.Name = "Start_Button";
             this.Start_Button.Size = new System.Drawing.Size(165, 50);
-            this.Start_Button.TabIndex = 1;
+            this.Start_Button.TabIndex = 0;
             this.Start_Button.Text = "Start";
             this.Start_Button.UseVisualStyleBackColor = true;
             this.Start_Button.Click += new System.EventHandler(this.Start_Button_Click);
-            // 
-            // Continue_Button
-            // 
-            this.Continue_Button.Enabled = false;
-            this.Continue_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Continue_Button.Location = new System.Drawing.Point(230, 145);
-            this.Continue_Button.Name = "Continue_Button";
-            this.Continue_Button.Size = new System.Drawing.Size(165, 50);
-            this.Continue_Button.TabIndex = 1;
-            this.Continue_Button.Text = "Continue";
-            this.Continue_Button.UseVisualStyleBackColor = true;
-            this.Continue_Button.Visible = false;
             // 
             // Player_infolbl
             // 
@@ -88,16 +77,16 @@
             this.Player_infolbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Player_infolbl.Location = new System.Drawing.Point(12, 9);
             this.Player_infolbl.Name = "Player_infolbl";
-            this.Player_infolbl.Size = new System.Drawing.Size(212, 26);
+            this.Player_infolbl.Size = new System.Drawing.Size(220, 25);
             this.Player_infolbl.TabIndex = 2;
             this.Player_infolbl.Text = "Üdvözöllek: ";
             this.Player_infolbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Szintbr
             // 
-            this.Szintbr.Location = new System.Drawing.Point(401, 39);
+            this.Szintbr.Location = new System.Drawing.Point(395, 40);
             this.Szintbr.Name = "Szintbr";
-            this.Szintbr.Size = new System.Drawing.Size(214, 23);
+            this.Szintbr.Size = new System.Drawing.Size(220, 25);
             this.Szintbr.Step = 1;
             this.Szintbr.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.Szintbr.TabIndex = 3;
@@ -105,9 +94,9 @@
             // Tapasztalati_szintlbl
             // 
             this.Tapasztalati_szintlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(238)));
-            this.Tapasztalati_szintlbl.Location = new System.Drawing.Point(401, 12);
+            this.Tapasztalati_szintlbl.Location = new System.Drawing.Point(395, 12);
             this.Tapasztalati_szintlbl.Name = "Tapasztalati_szintlbl";
-            this.Tapasztalati_szintlbl.Size = new System.Drawing.Size(214, 23);
+            this.Tapasztalati_szintlbl.Size = new System.Drawing.Size(220, 25);
             this.Tapasztalati_szintlbl.TabIndex = 4;
             this.Tapasztalati_szintlbl.Text = "Tapasztalati szint: ";
             this.Tapasztalati_szintlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -117,10 +106,22 @@
             this.Aranylbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(238)));
             this.Aranylbl.Location = new System.Drawing.Point(13, 39);
             this.Aranylbl.Name = "Aranylbl";
-            this.Aranylbl.Size = new System.Drawing.Size(211, 23);
+            this.Aranylbl.Size = new System.Drawing.Size(220, 25);
             this.Aranylbl.TabIndex = 5;
             this.Aranylbl.Text = "Arany: ";
             this.Aranylbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Arany_button
+            // 
+            this.Arany_button.Enabled = false;
+            this.Arany_button.Location = new System.Drawing.Point(13, 67);
+            this.Arany_button.Name = "Arany_button";
+            this.Arany_button.Size = new System.Drawing.Size(222, 25);
+            this.Arany_button.TabIndex = 6;
+            this.Arany_button.Text = "Feltöltés";
+            this.Arany_button.UseVisualStyleBackColor = true;
+            this.Arany_button.Visible = false;
+            this.Arany_button.Click += new System.EventHandler(this.Arany_button_Click);
             // 
             // Basic
             // 
@@ -129,11 +130,11 @@
             this.BackgroundImage = global::Zarodoga.Properties.Resources.Alchemy_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(627, 608);
+            this.Controls.Add(this.Arany_button);
             this.Controls.Add(this.Aranylbl);
             this.Controls.Add(this.Tapasztalati_szintlbl);
             this.Controls.Add(this.Szintbr);
             this.Controls.Add(this.Player_infolbl);
-            this.Controls.Add(this.Continue_Button);
             this.Controls.Add(this.Start_Button);
             this.Controls.Add(this.Options_Button);
             this.Controls.Add(this.Exit_Button_Btn);
@@ -152,10 +153,10 @@
         private System.Windows.Forms.Button Exit_Button_Btn;
         private System.Windows.Forms.Button Options_Button;
         private System.Windows.Forms.Button Start_Button;
-        private System.Windows.Forms.Button Continue_Button;
         public System.Windows.Forms.Label Player_infolbl;
         public System.Windows.Forms.ProgressBar Szintbr;
         private System.Windows.Forms.Label Tapasztalati_szintlbl;
         public System.Windows.Forms.Label Aranylbl;
+        private System.Windows.Forms.Button Arany_button;
     }
 }

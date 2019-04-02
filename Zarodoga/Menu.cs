@@ -21,10 +21,15 @@ namespace Zarodoga
         public Basic()
         {
             InitializeComponent();
-            this.FormClosing += Exit_Button_Click;
         }
 
-        // Alkalmazás bezárása 
+        //Alkalamzás bezárása x-el
+        private void Form_Closing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+
+        // Alkalmazás bezárása gombra
         private void Exit_Button_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -33,9 +38,18 @@ namespace Zarodoga
         // Játék
         private void Start_Button_Click(object sender, EventArgs e)
         {
-            InGame form = new InGame();
+            Login form = null;
+            foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType().ToString() == "Zarodoga.Login")
+                {
+                    form = (Login)item;
+                }
+            }
+            Adatbazis.Update_Arany(Adatbazis.Select_Player_Id(form.User_box.Text),(-10));
+            InGame formGame = new InGame();
             this.Hide();
-            form.ShowDialog();
+            formGame.ShowDialog();
             
         }
 
@@ -62,41 +76,48 @@ namespace Zarodoga
             Aranylbl.Text += " " + p.arany;
             Tapasztalati_szintlbl.Text += " " + Aktualisszint();
             Szintmaximum();
+            if(p.arany == 0)
+            {
+                Arany_button.Enabled = true;
+                Arany_button.Visible = true;
+            }
 
         }
 
         // Progressbar maximum beállítása
         private void Szintmaximum()
         {
-            if (p.tapasztalat >= szintek[0] && p.tapasztalat <= szintek[1])
+            if (p.tapasztalat < 100)
+            {
+                Szintbr.Maximum = szintek[0];
+                Szintbr.Value = p.tapasztalat;
+            }
+            else if(p.tapasztalat >= 100 && p.tapasztalat < 300)
             {
                 Szintbr.Maximum = szintek[1];
-                Szintbr.Value = (p.tapasztalat - szintek[0]);
+                Szintbr.Value = (p.tapasztalat - 100);
             }
-            else if((p.tapasztalat) >= szintek[1] && p.tapasztalat <= szintek[2])
+            else if ((p.tapasztalat) >= 300 && p.tapasztalat < 800)
             {
                 Szintbr.Maximum = szintek[2];
-                Szintbr.Value = (p.tapasztalat - (szintek[0] + szintek[1]));
+                Szintbr.Value = (p.tapasztalat - 300);
             }
-            else if ((p.tapasztalat) >= szintek[2] && p.tapasztalat <= szintek[3])
+            else if ((p.tapasztalat) >= 800 && p.tapasztalat < 1800)
             {
                 Szintbr.Maximum = szintek[3];
-                Szintbr.Value = (p.tapasztalat - (szintek[0] + szintek[1]+ szintek[2]));
+                Szintbr.Value = (p.tapasztalat - 800);
             }
-            else if ((p.tapasztalat) >= szintek[3] && p.tapasztalat <= szintek[4])
+            else if (p.tapasztalat >= 1800)
             {
                 Szintbr.Maximum = szintek[4];
-                Szintbr.Value = (p.tapasztalat - (szintek[0] + szintek[1]+ szintek[2] + szintek[3]));
-            }
-            else if ((p.tapasztalat) >= szintek[4])
-            {
-                Szintbr.Maximum = p.tapasztalat;
-                Szintbr.Value = p.tapasztalat;
+                Szintbr.Value = (p.tapasztalat - 1800);
             }
             else
             {
                 Szintbr.Maximum = p.tapasztalat;
+                Szintbr.Value = p.tapasztalat;
             }
+
         }
 
         // Aktuális szint megadása
@@ -127,6 +148,27 @@ namespace Zarodoga
                 return 5;
             }
             return 0;
+        }
+
+        // +100 arany feltöltése
+        private void Arany_button_Click(object sender, EventArgs e)
+        {
+            Login form = null;
+            foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType().ToString() == "Zarodoga.Login")
+                {
+                    form = (Login)item;
+                }
+            }
+            Adatbazis.Update_Arany(Adatbazis.Select_Player_Id(form.User_box.Text), 100);
+        }
+
+        private void Options_Button_Click(object sender, EventArgs e)
+        {
+            Options form = new Options();
+            this.Hide();
+            form.ShowDialog();
         }
     }
 }

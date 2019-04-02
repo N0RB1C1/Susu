@@ -277,7 +277,7 @@ namespace Zarodoga
         }
 
         // Arany hozzáadása
-        public static void Update_Arany(int id, int tapasztalat)
+        public static void Update_Arany(int id, int arany)
         {
             try
             {
@@ -285,7 +285,7 @@ namespace Zarodoga
                 command = kapcsolodas.CreateCommand();
                 string sql = "UPDATE loot SET arany = loot.arany + @param1 WHERE loot.player_id = @param2; ";
                 MySqlCommand cmd = new MySqlCommand(sql, kapcsolodas);
-                cmd.Parameters.Add("@param1", MySqlDbType.Text).Value = tapasztalat;
+                cmd.Parameters.Add("@param1", MySqlDbType.Text).Value = arany;
                 cmd.Parameters.Add("@param2", MySqlDbType.Text).Value = id;
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.ExecuteNonQuery();
@@ -294,5 +294,57 @@ namespace Zarodoga
             catch (Exception e) { Console.WriteLine(e); }
         }
 
+        // Felhasznalo megváltoztatása 
+        public static void Update_Felhasznalo(string felhasznalo, int id)
+        {
+            try
+            {
+                kapcsolodas.Open();
+                command = kapcsolodas.CreateCommand();
+                string sql = "UPDATE players.player SET username = @param1 WHERE player.id = @param2;";
+                MySqlCommand cmd = new MySqlCommand(sql, kapcsolodas);
+                cmd.Parameters.Add("@param1", MySqlDbType.Text).Value = felhasznalo;
+                cmd.Parameters.Add("@param2", MySqlDbType.Text).Value = id;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteNonQuery();
+                kapcsolodas.Close();
+            }
+            catch (Exception e) { Console.WriteLine(e); }
+        }
+
+        // Felhasznalo megváltoztatása 
+        public static void Update_Jelszo(string jelszo, int id)
+        {
+            try
+            {
+                kapcsolodas.Open();
+                command = kapcsolodas.CreateCommand();
+                string sql = "UPDATE players.player SET password = @param1 WHERE player.id = @param2;";
+                MySqlCommand cmd = new MySqlCommand(sql, kapcsolodas);
+                cmd.Parameters.Add("@param1", MySqlDbType.Text).Value = jelszo;
+                cmd.Parameters.Add("@param2", MySqlDbType.Text).Value = id;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteNonQuery();
+                kapcsolodas.Close();
+            }
+            catch (Exception e) { Console.WriteLine(e); }
+        }
+
+        // Felhasznaló törlése
+        public static void Delete_Jatekos(int id)
+        {
+            try
+            {
+                kapcsolodas.Open();
+                command = kapcsolodas.CreateCommand();
+                string sql = "DELETE FROM players.player WHERE player.id = @param1";
+                MySqlCommand cmd = new MySqlCommand(sql, kapcsolodas);
+                cmd.Parameters.Add("@param1", MySqlDbType.Text).Value = id;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteNonQuery();
+                kapcsolodas.Close();
+            }
+            catch (Exception e) { Console.WriteLine(e); }
+        }
     }
 }

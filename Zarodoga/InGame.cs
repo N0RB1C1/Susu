@@ -39,7 +39,7 @@ namespace Zarodoga
         //Alkalamzás bezárása
         private void Form_Closing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         // Első elem választása
@@ -653,12 +653,6 @@ namespace Zarodoga
 
         }
 
-        // Thick event
-        private void Round_Tick(object sender, EventArgs e)
-        {
-
-        }
-
         // Megjeleníti a spelleket
         private void Spell(object player, object enemy)
         {
@@ -824,7 +818,7 @@ namespace Zarodoga
             {
                 Start_Ingame.Enabled = false;
                 Loot form = new Loot();
-                form.tapasztalatipont = ellen.Level * 5;
+                form.tapasztalatipont = ellen.Level * 10;
                 form.End.Text = "Vereség";
                 form.Show();
 
@@ -835,7 +829,8 @@ namespace Zarodoga
 
                 Start_Ingame.Enabled = false;
                 Loot form = new Loot();
-                form.tapasztalatipont = ellen.Level * 10;
+                form.tapasztalatipont = ellen.Level * 15;
+                form.arany = ellen.Level * 5;
                 form.End.Text = "Győzelem";
                 form.Show();
 

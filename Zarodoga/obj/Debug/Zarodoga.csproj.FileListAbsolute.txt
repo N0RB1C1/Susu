@@ -45,3 +45,4 @@ C:\Users\N0RB1C1\Source\Repos\Susu\Zarodoga\obj\Debug\Zarodoga.InGame.resources
 C:\Users\N0RB1C1\Source\Repos\Susu\Zarodoga\obj\Debug\Zarodoga.Loot.resources
 C:\Users\N0RB1C1\Source\Repos\Susu\Zarodoga\obj\Debug\Zarodoga.Basic.resources
 C:\Users\Diak\Source\Repos\Susu\Zarodoga\obj\Debug\Zarodoga.Basic.resources
+C:\Users\Diak\Source\Repos\Susu\Zarodoga\obj\Debug\Zarodoga.Options.resources

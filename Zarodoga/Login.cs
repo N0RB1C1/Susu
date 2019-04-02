@@ -34,6 +34,7 @@ namespace Zarodoga
                     Adatbazis.InsertInto_Loot(User_box.Text);
                     User_box.Clear();
                     Pass_box.Clear();
+                    MessageBox.Show("Sikeres regisztráció!");
                 }
                 else
                 {
@@ -55,7 +56,7 @@ namespace Zarodoga
 
             if (Adatbazis.Select(User_box.Text, Pass_box.Text) == 0)
             {
-                string message = "Invalid vagy!";
+                string message = "Nem megfelő a felhasználónév vagy a jelszó!";
                 string caption = "Form Closing";
                 MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
