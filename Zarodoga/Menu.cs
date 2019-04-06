@@ -170,5 +170,20 @@ namespace Zarodoga
             this.Hide();
             form.ShowDialog();
         }
+
+        private void vip_btn_Click(object sender, EventArgs e)
+        {
+            Login form = null;
+            foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType().ToString() == "Zarodoga.Login")
+                {
+                    form = (Login)item;
+                }
+            }
+            Adatbazis.Update_Jogosultsag(Adatbazis.Select_Player_Id(form.User_box.Text));
+            MessageBox.Show("Köszönjük, hogy támogat minket!");
+            vip_btn.Enabled = false;
+        }
     }
 }

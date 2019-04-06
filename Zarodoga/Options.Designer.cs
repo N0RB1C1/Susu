@@ -36,8 +36,9 @@
             this.Masodikjelszo_box = new System.Windows.Forms.TextBox();
             this.ujra_lbl = new System.Windows.Forms.Label();
             this.Felhasznalo_btn = new System.Windows.Forms.Button();
-            this.Jelszo_btn = new System.Windows.Forms.Button();
+            this.Delete_btn = new System.Windows.Forms.Button();
             this.Vissza_btn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Felhasznalo_lbl
@@ -109,15 +110,15 @@
             this.Felhasznalo_btn.UseVisualStyleBackColor = true;
             this.Felhasznalo_btn.Click += new System.EventHandler(this.Felhasznalo_btn_Click);
             // 
-            // Jelszo_btn
+            // Delete_btn
             // 
-            this.Jelszo_btn.Location = new System.Drawing.Point(71, 263);
-            this.Jelszo_btn.Name = "Jelszo_btn";
-            this.Jelszo_btn.Size = new System.Drawing.Size(224, 23);
-            this.Jelszo_btn.TabIndex = 4;
-            this.Jelszo_btn.Text = "Jelszó mentése";
-            this.Jelszo_btn.UseVisualStyleBackColor = true;
-            this.Jelszo_btn.Click += new System.EventHandler(this.Jelszo_btn_Click);
+            this.Delete_btn.Location = new System.Drawing.Point(71, 319);
+            this.Delete_btn.Name = "Delete_btn";
+            this.Delete_btn.Size = new System.Drawing.Size(224, 23);
+            this.Delete_btn.TabIndex = 4;
+            this.Delete_btn.Text = "Felhasználó törlése";
+            this.Delete_btn.UseVisualStyleBackColor = true;
+            this.Delete_btn.Click += new System.EventHandler(this.Delete_btn_Click);
             // 
             // Vissza_btn
             // 
@@ -129,13 +130,24 @@
             this.Vissza_btn.UseVisualStyleBackColor = true;
             this.Vissza_btn.Click += new System.EventHandler(this.Vissza_btn_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(71, 263);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(224, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Jelszó mentése";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Jelszo_btn_Click);
+            // 
             // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(370, 414);
             this.Controls.Add(this.Vissza_btn);
-            this.Controls.Add(this.Jelszo_btn);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Delete_btn);
             this.Controls.Add(this.Felhasznalo_btn);
             this.Controls.Add(this.ujra_lbl);
             this.Controls.Add(this.info2_lbl);
@@ -163,7 +175,8 @@
         private System.Windows.Forms.TextBox Masodikjelszo_box;
         private System.Windows.Forms.Label ujra_lbl;
         private System.Windows.Forms.Button Felhasznalo_btn;
-        private System.Windows.Forms.Button Jelszo_btn;
+        private System.Windows.Forms.Button Delete_btn;
         private System.Windows.Forms.Button Vissza_btn;
+        private System.Windows.Forms.Button button1;
     }
 }

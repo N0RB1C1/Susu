@@ -45,8 +45,8 @@ namespace Zarodoga
                         }
                     }
                     Adatbazis.Update_Felhasznalo(Felhasznalo_box.Text, Adatbazis.Select_Player_Id(form.User_box.Text));
-                    form.User_box.Text = Felhasznalo_box.Text;
-                    Felhasznalo_lbl.Text += Felhasznalo_box.Text;
+                    form.User_box.Text = Felhasznalo_box.Text;                   
+                    Felhasznalo_lbl.Text = "Felhasználó neve: " + Felhasznalo_box.Text;
                     Felhasznalo_box.Clear();
                     MessageBox.Show("Sikeres felhasznaló változtatás");
                 }
@@ -86,7 +86,16 @@ namespace Zarodoga
 
         private void Delete_btn_Click(object sender, EventArgs e)
         {
-
+            Login form = null;
+            foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType().ToString() == "Zarodoga.Login")
+                {
+                    form = (Login)item;
+                }
+            }
+            Adatbazis.Delete_Jatekos(Adatbazis.Select_Player_Id(form.User_box.Text));
+            Application.Exit();
         }
 
         private void Vissza_btn_Click(object sender, EventArgs e)

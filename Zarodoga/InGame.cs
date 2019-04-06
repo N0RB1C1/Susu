@@ -278,6 +278,16 @@ namespace Zarodoga
         // Enemy auto generate
         private void InGame_Load(object sender, EventArgs e)
         {
+            Login form = null;
+            foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType().ToString() == "Zarodoga.Login")
+                {
+                    form = (Login)item;
+                }
+            }
+
+
             Start_Ingame.Enabled = false;
             Gyors_btn.Enabled = false;
             //Véletlenszerű ellenség
@@ -307,7 +317,7 @@ namespace Zarodoga
             Winner_Third.Enabled = true;
             Winner_First.Enabled = true;
             Winner_Second.Enabled = true;
-            Winner_Third.Visible = true;
+            Winner_Third.Visible = true;           
             Gyors_btn.Enabled = true;
             Spell(Player_first_element, Enemy_first_element);
             Spell(Player_second_element, Enemy_second_element);

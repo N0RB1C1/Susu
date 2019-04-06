@@ -36,6 +36,7 @@
             this.Tapasztalati_szintlbl = new System.Windows.Forms.Label();
             this.Aranylbl = new System.Windows.Forms.Label();
             this.Arany_button = new System.Windows.Forms.Button();
+            this.vip_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Exit_Button_Btn
@@ -123,6 +124,16 @@
             this.Arany_button.Visible = false;
             this.Arany_button.Click += new System.EventHandler(this.Arany_button_Click);
             // 
+            // vip_btn
+            // 
+            this.vip_btn.Location = new System.Drawing.Point(393, 67);
+            this.vip_btn.Name = "vip_btn";
+            this.vip_btn.Size = new System.Drawing.Size(222, 25);
+            this.vip_btn.TabIndex = 6;
+            this.vip_btn.Text = "VIP tagság";
+            this.vip_btn.UseVisualStyleBackColor = true;
+            this.vip_btn.Click += new System.EventHandler(this.vip_btn_Click);
+            // 
             // Basic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,6 +141,7 @@
             this.BackgroundImage = global::Zarodoga.Properties.Resources.Alchemy_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(627, 608);
+            this.Controls.Add(this.vip_btn);
             this.Controls.Add(this.Arany_button);
             this.Controls.Add(this.Aranylbl);
             this.Controls.Add(this.Tapasztalati_szintlbl);
@@ -158,5 +170,6 @@
         private System.Windows.Forms.Label Tapasztalati_szintlbl;
         public System.Windows.Forms.Label Aranylbl;
         private System.Windows.Forms.Button Arany_button;
+        private System.Windows.Forms.Button vip_btn;
     }
 }

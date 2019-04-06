@@ -330,6 +330,23 @@ namespace Zarodoga
             catch (Exception e) { Console.WriteLine(e); }
         }
 
+        // Felhasznalo megváltoztatása 
+        public static void Update_Jogosultsag(int id)
+        {
+            try
+            {
+                kapcsolodas.Open();
+                command = kapcsolodas.CreateCommand();
+                string sql = "UPDATE loot SET jogosultsag = '1' WHERE loot.player_id = @param1; ";
+                MySqlCommand cmd = new MySqlCommand(sql, kapcsolodas);
+                cmd.Parameters.Add("@param1", MySqlDbType.Text).Value = id;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteNonQuery();
+                kapcsolodas.Close();
+            }
+            catch (Exception e) { Console.WriteLine(e); }
+        }
+
         // Felhasznaló törlése
         public static void Delete_Jatekos(int id)
         {
@@ -338,6 +355,23 @@ namespace Zarodoga
                 kapcsolodas.Open();
                 command = kapcsolodas.CreateCommand();
                 string sql = "DELETE FROM players.player WHERE player.id = @param1";
+                MySqlCommand cmd = new MySqlCommand(sql, kapcsolodas);
+                cmd.Parameters.Add("@param1", MySqlDbType.Text).Value = id;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteNonQuery();
+                kapcsolodas.Close();
+            }
+            catch (Exception e) { Console.WriteLine(e); }
+        }
+
+        // Felhasznaló törlése loot
+        public static void Delete_Jatekos_Loot(int id)
+        {
+            try
+            {
+                kapcsolodas.Open();
+                command = kapcsolodas.CreateCommand();
+                string sql = "DELETE FROM players.loot WHERE loot.player.id = @param1";
                 MySqlCommand cmd = new MySqlCommand(sql, kapcsolodas);
                 cmd.Parameters.Add("@param1", MySqlDbType.Text).Value = id;
                 cmd.CommandType = System.Data.CommandType.Text;
