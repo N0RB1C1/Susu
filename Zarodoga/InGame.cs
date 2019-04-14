@@ -333,8 +333,11 @@ namespace Zarodoga
             Winner_Third.Enabled = true;
             Winner_First.Enabled = true;
             Winner_Second.Enabled = true;
-            Winner_Third.Visible = true;           
-            Gyors_btn.Enabled = true;
+            Winner_Third.Visible = true;
+            if (Enemy_hp.Value >= 40 && Player_hp.Value >= 40)
+            {
+                Gyors_btn.Enabled = true;
+            }
             Spell(Player_first_element, Enemy_first_element);
             Spell(Player_second_element, Enemy_second_element);
             Spell(Player_third_element, Enemy_third_element);
