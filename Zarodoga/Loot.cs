@@ -19,8 +19,7 @@ namespace Zarodoga
         public Loot()
         {
             InitializeComponent();
-            this.FormClosing += Pick_up_loot_Click;
-            
+            this.FormClosing += Pick_up_loot_Click;            
         }
 
         private void Loot_Load(object sender, EventArgs e)
@@ -49,11 +48,9 @@ namespace Zarodoga
             }
             Adatbazis.Update_Arany(Adatbazis.Select_Player_Id(form.User_box.Text), arany);
             Adatbazis.Update_Tapasztalat(Adatbazis.Select_Player_Id(form.User_box.Text), tapasztalatipont);
-            this.Hide();
-            InGame.ActiveForm.Hide();
+            this.Close();
             Basic form2 = new Basic();
-            form2.ShowDialog();
-            
+            form2.ShowDialog();           
         }
     }
 }

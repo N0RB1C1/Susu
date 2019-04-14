@@ -38,7 +38,7 @@ namespace Zarodoga
                 command = kapcsolodasempty.CreateCommand();
                 string create = "CREATE DATABASE IF NOT EXISTS Players";
                 string tables = "CREATE TABLE Players.Player (id INT NOT NULL AUTO_INCREMENT , username VARCHAR(128) NOT NULL , password VARCHAR(128) NOT NULL , PRIMARY KEY (id)) ENGINE = MyISAM; ";
-                string tables_second = "CREATE TABLE players.loot (player_id INT NOT NULL AUTO_INCREMENT, arany INT NOT NULL, tapasztalati_pont INT NOT NULL, jogosultsag INT NOT NULL, palya INT NOT NULL, PRIMARY KEY(player_id)) ENGINE = MyISAM; ";
+                string tables_second = "CREATE TABLE players.loot (player_id INT NOT NULL AUTO_INCREMENT, arany INT NOT NULL, tapasztalati_pont INT NOT NULL, jogosultsag INT NOT NULL, PRIMARY KEY(player_id)) ENGINE = MyISAM; ";
                 command = new MySqlCommand(create, kapcsolodasempty);
                 command.CommandType = System.Data.CommandType.Text;
                 command.ExecuteNonQuery();
@@ -81,13 +81,12 @@ namespace Zarodoga
             {
                 kapcsolodas.Open();
                 command = kapcsolodas.CreateCommand();
-                string sql = "INSERT INTO loot(arany,tapasztalati_pont,palya,jogosultsag)" +
-                "VALUES(@param1,@param2,@param3,@param4)";
+                string sql = "INSERT INTO loot(arany,tapasztalati_pont,jogosultsag)" +
+                "VALUES(@param1,@param2,@param3)";
                 MySqlCommand cmd = new MySqlCommand(sql, kapcsolodas);
                 cmd.Parameters.Add("@param1", MySqlDbType.Text).Value = 100;
                 cmd.Parameters.Add("@param2", MySqlDbType.Text).Value = 0;
                 cmd.Parameters.Add("@param3", MySqlDbType.Text).Value = 0;
-                cmd.Parameters.Add("@param4", MySqlDbType.Text).Value = 0;
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.ExecuteNonQuery();
                 kapcsolodas.Close();
@@ -234,25 +233,6 @@ namespace Zarodoga
                 int jogosultsag = (int)command.ExecuteScalar();
                 kapcsolodas.Close();
                 return jogosultsag;
-
-            }
-            catch (Exception e) { throw e; }
-        }
-
-        //Select player palya
-        public static int Select_Player_Palya(int id)
-        {
-            try
-            {
-                kapcsolodas.Open();
-                command = kapcsolodas.CreateCommand();
-                string sql = "SELECT palya FROM loot WHERE player_id = " +
-                "(@param1)";
-                command = new MySqlCommand(sql, kapcsolodas);
-                command.Parameters.Add("@param1", MySqlDbType.Text).Value = id;
-                int palya = (int)command.ExecuteScalar();
-                kapcsolodas.Close();
-                return palya;
 
             }
             catch (Exception e) { throw e; }

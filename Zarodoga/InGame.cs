@@ -39,7 +39,7 @@ namespace Zarodoga
         //Alkalamzás bezárása
         private void Form_Closing(object sender, FormClosingEventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         // Első elem választása
@@ -54,8 +54,9 @@ namespace Zarodoga
                 Element_First = new PictureBox
                 {
                     Name = "Element_Choose",
-                    Size = new Size(15, 15),
+                    Size = new Size(25, 25),
                     Location = new Point(picturebox.Location.X + 10, picturebox.Location.Y + 20),
+                    BackgroundImage = Zarodoga.Properties.Resources.Flare,
                     BackColor = Color.Red,
                 };
 
@@ -63,8 +64,9 @@ namespace Zarodoga
                 Element_Second = new PictureBox
                 {
                     Name = "Element_Choose",
-                    Size = new Size(15, 15),
+                    Size = new Size(25, 25),
                     Location = new Point(picturebox.Location.X + 70, picturebox.Location.Y + 20),
+                    BackgroundImage = Zarodoga.Properties.Resources.Tide,
                     BackColor = Color.Aqua,
                 };
 
@@ -72,8 +74,9 @@ namespace Zarodoga
                 Element_Third = new PictureBox
                 {
                     Name = "Element_Choose",
-                    Size = new Size(15, 15),
+                    Size = new Size(25, 25),
                     Location = new Point(picturebox.Location.X + 40, picturebox.Location.Y + 70),
+                    BackgroundImage = Zarodoga.Properties.Resources.Plant,
                     BackColor = Color.LawnGreen,
                 };
             }
@@ -85,8 +88,9 @@ namespace Zarodoga
                 Element_Fourth = new PictureBox
                 {
                     Name = "Element_Choose",
-                    Size = new Size(15, 15),
+                    Size = new Size(25, 25),
                     Location = new Point(picturebox.Location.X + 10, picturebox.Location.Y + 20),
+                    BackgroundImage = Zarodoga.Properties.Resources.Flare,
                     BackColor = Color.Red,
                 };
 
@@ -94,8 +98,9 @@ namespace Zarodoga
                 Element_Fiveth = new PictureBox
                 {
                     Name = "Element_Choose",
-                    Size = new Size(15, 15),
+                    Size = new Size(25, 25),
                     Location = new Point(picturebox.Location.X + 70, picturebox.Location.Y + 20),
+                    BackgroundImage = Zarodoga.Properties.Resources.Tide,
                     BackColor = Color.Aqua,
                 };
 
@@ -103,8 +108,9 @@ namespace Zarodoga
                 Element_Sixth = new PictureBox
                 {
                     Name = "Element_Choose",
-                    Size = new Size(15, 15),
+                    Size = new Size(25, 25),
                     Location = new Point(picturebox.Location.X + 40, picturebox.Location.Y + 70),
+                    BackgroundImage = Zarodoga.Properties.Resources.Plant,
                     BackColor = Color.LawnGreen,
                 };
             }
@@ -116,8 +122,9 @@ namespace Zarodoga
                 Element_Seventh = new PictureBox
                 {
                     Name = "Element_Choose",
-                    Size = new Size(15, 15),
+                    Size = new Size(25, 25),
                     Location = new Point(picturebox.Location.X + 10, picturebox.Location.Y + 20),
+                    BackgroundImage = Zarodoga.Properties.Resources.Flare,
                     BackColor = Color.Red,
                 };
 
@@ -125,8 +132,9 @@ namespace Zarodoga
                 Element_Eighth = new PictureBox
                 {
                     Name = "Element_Choose",
-                    Size = new Size(15, 15),
+                    Size = new Size(25, 25),
                     Location = new Point(picturebox.Location.X + 70, picturebox.Location.Y + 20),
+                    BackgroundImage = Zarodoga.Properties.Resources.Tide,
                     BackColor = Color.Aqua,
                 };
 
@@ -134,8 +142,9 @@ namespace Zarodoga
                 Element_Nineth = new PictureBox
                 {
                     Name = "Element_Choose",
-                    Size = new Size(15, 15),
+                    Size = new Size(25, 25),
                     Location = new Point(picturebox.Location.X + 40, picturebox.Location.Y + 70),
+                    BackgroundImage = Zarodoga.Properties.Resources.Plant,
                     BackColor = Color.LawnGreen,
                 };
             }
@@ -278,6 +287,11 @@ namespace Zarodoga
         // Enemy auto generate
         private void InGame_Load(object sender, EventArgs e)
         {
+            info_label.Text = (
+                "Az ellenség élete: " + "\n" + Enemy_hp.Value
+                + "\nA játékos élete: " + "\n" + Player_hp.Value
+                + "\n Az ellenség neve: " + ellen.Name  
+            );
             Login form = null;
             foreach (var item in Application.OpenForms)
             {
@@ -286,7 +300,6 @@ namespace Zarodoga
                     form = (Login)item;
                 }
             }
-
 
             Start_Ingame.Enabled = false;
             Gyors_btn.Enabled = false;
@@ -306,10 +319,6 @@ namespace Zarodoga
         // Kör kezdete
         private void Start_Ingame_Click(object sender, EventArgs e)
         {
-            info_label.Text = (
-            "Az ellenség élete: " + Enemy_hp.Value
-            + "\nA játékos élete: " + Player_hp.Value
-            );
             Enemy_behaviour(ellen.Level);
             Start_Ingame.Visible = false;
             Winner_First.Visible = true;
@@ -831,7 +840,6 @@ namespace Zarodoga
                 form.tapasztalatipont = ellen.Level * 10;
                 form.End.Text = "Vereség";
                 form.Show();
-
             }
             // Victory
             else if (Enemy_hp.Value == 0)
@@ -843,7 +851,6 @@ namespace Zarodoga
                 form.arany = ellen.Level * 5;
                 form.End.Text = "Győzelem";
                 form.Show();
-
             }
         }
 
@@ -853,7 +860,11 @@ namespace Zarodoga
             Round_Start(Winner_First);
             Winner_First.Enabled = false;
             Winner_First.Visible = false;
-
+            info_label.Text = (
+                "Az ellenség élete: " + "\n" + Enemy_hp.Value
+                + "\nA játékos élete: " + "\n" + Player_hp.Value
+                + "\n Az ellenség neve: " + ellen.Name
+                );
             if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
             {
                 Start_Ingame.Visible = true;
@@ -873,6 +884,10 @@ namespace Zarodoga
             Round_Start(Winner_Second);
             Winner_Second.Enabled = false;
             Winner_Second.Visible = false;
+            info_label.Text = ("Az ellenség élete: " + "\n" + Enemy_hp.Value
+                + "\nA játékos élete: " + "\n" + Player_hp.Value
+                + "\n Az ellenség neve: " + ellen.Name
+                );
             if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
             {
                 Start_Ingame.Visible = true;
@@ -892,7 +907,11 @@ namespace Zarodoga
         {
             Round_Start(Winner_Third);
             Winner_Third.Enabled = false;
-            Winner_Third.Visible = false;          
+            Winner_Third.Visible = false;
+            info_label.Text = ("Az ellenség élete: " + "\n" + Enemy_hp.Value
+                + "\nA játékos élete: " + "\n" + Player_hp.Value
+                + "\n Az ellenség neve: " + ellen.Name
+                );
             if (Winner_First.Enabled == false && Winner_Second.Enabled == false && Winner_Third.Enabled == false)
             {
                 Start_Ingame.Visible = true;
@@ -907,6 +926,7 @@ namespace Zarodoga
             }
         }
 
+        // Gyorsítás
         private void Gyors_btn_Click(object sender, EventArgs e)
         {
             if (Hp_Check() == true)

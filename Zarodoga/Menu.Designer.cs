@@ -132,7 +132,7 @@
             this.vip_btn.TabIndex = 6;
             this.vip_btn.Text = "VIP tagság";
             this.vip_btn.UseVisualStyleBackColor = true;
-            this.vip_btn.Click += new System.EventHandler(this.vip_btn_Click);
+            this.vip_btn.Click += new System.EventHandler(this.Vip_btn_Click);
             // 
             // Basic
             // 

@@ -156,6 +156,8 @@
             this.Controls.Add(this.Elsojelszo_box);
             this.Controls.Add(this.Felhasznalo_box);
             this.Controls.Add(this.Felhasznalo_lbl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Options";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Options";

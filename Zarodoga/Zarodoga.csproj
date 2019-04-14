@@ -186,5 +186,26 @@
   <ItemGroup>
     <None Include="Resources\Leaf_spell_res.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login_back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hero.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Scrool.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flare.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plant.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tide.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lizard1.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

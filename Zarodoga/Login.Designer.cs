@@ -40,7 +40,7 @@
             // Register_Button
             // 
             this.Register_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Register_Button.Location = new System.Drawing.Point(124, 144);
+            this.Register_Button.Location = new System.Drawing.Point(119, 124);
             this.Register_Button.Name = "Register_Button";
             this.Register_Button.Size = new System.Drawing.Size(150, 25);
             this.Register_Button.TabIndex = 2;
@@ -50,14 +50,16 @@
             // 
             // User_box
             // 
-            this.User_box.Location = new System.Drawing.Point(124, 62);
+            this.User_box.Location = new System.Drawing.Point(119, 42);
+            this.User_box.MaxLength = 10;
             this.User_box.Name = "User_box";
             this.User_box.Size = new System.Drawing.Size(150, 20);
             this.User_box.TabIndex = 0;
             // 
             // Pass_box
             // 
-            this.Pass_box.Location = new System.Drawing.Point(124, 118);
+            this.Pass_box.Location = new System.Drawing.Point(119, 98);
+            this.Pass_box.MaxLength = 10;
             this.Pass_box.Name = "Pass_box";
             this.Pass_box.PasswordChar = '*';
             this.Pass_box.Size = new System.Drawing.Size(150, 20);
@@ -66,7 +68,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(124, 29);
+            this.label1.Location = new System.Drawing.Point(119, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(150, 30);
             this.label1.TabIndex = 2;
@@ -76,7 +78,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(124, 85);
+            this.label2.Location = new System.Drawing.Point(119, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(150, 30);
             this.label2.TabIndex = 2;
@@ -86,7 +88,7 @@
             // Login_button
             // 
             this.Login_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Login_button.Location = new System.Drawing.Point(124, 175);
+            this.Login_button.Location = new System.Drawing.Point(119, 155);
             this.Login_button.Name = "Login_button";
             this.Login_button.Size = new System.Drawing.Size(150, 23);
             this.Login_button.TabIndex = 3;
@@ -102,7 +104,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 336);
+            this.BackgroundImage = global::Zarodoga.Properties.Resources.Login_back;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(396, 339);
             this.Controls.Add(this.Login_button);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

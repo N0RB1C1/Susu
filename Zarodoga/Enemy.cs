@@ -13,7 +13,7 @@ namespace Zarodoga
         private int level;
 
         // Ellenségek neve
-        string[] ellenseg = new string[5] {"ooze","ancient","forsetspirit","lizard","shroom"};
+        string[] ellenseg = new string[5] { "ooze", "ancient", "forestspirit", "lizard", "shroom"};
 
         
         // Random number 
@@ -50,14 +50,5 @@ namespace Zarodoga
             this.level = Rand.Next(1,6);
             this.healt_Point = level * 20 + 50;
         }
-
-        public int Level_one_enemy_behaviour()
-        {
-            int random;
-            random = Rand.Next(1, 3);
-            return random;
-        }
-
-
     }
 }

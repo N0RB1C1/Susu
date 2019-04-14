@@ -21,12 +21,13 @@ namespace Zarodoga
         public Basic()
         {
             InitializeComponent();
+            this.FormClosing += Form_Closing;
         }
 
         //Alkalamzás bezárása x-el
         private void Form_Closing(object sender, FormClosingEventArgs e)
         {
-            
+            Application.Exit();
         }
 
         // Alkalmazás bezárása gombra
@@ -69,17 +70,21 @@ namespace Zarodoga
                 Adatbazis.Select_Player_Id(form.User_box.Text),
                 Adatbazis.Select_Player_Arany(id),
                 Adatbazis.Select_Player_Tapasztalati_Pont(id),
-                Adatbazis.Select_Player_Jogosultsag(id),
-                Adatbazis.Select_Player_Palya(id)
+                Adatbazis.Select_Player_Jogosultsag(id)
                 );
+            if (p.jogosultsag > 0)
+            {
+                vip_btn.Enabled = false;
+            }
             Player_infolbl.Text += " " + p.username;
             Aranylbl.Text += " " + p.arany;
             Tapasztalati_szintlbl.Text += " " + Aktualisszint();
             Szintmaximum();
-            if(p.arany == 0)
+            if(p.arany == 0 || p.arany < 0)
             {
                 Arany_button.Enabled = true;
                 Arany_button.Visible = true;
+                Start_Button.Enabled = false;
             }
 
         }
@@ -164,6 +169,7 @@ namespace Zarodoga
             Adatbazis.Update_Arany(Adatbazis.Select_Player_Id(form.User_box.Text), 100);
         }
 
+        // Options ablak megnyitása
         private void Options_Button_Click(object sender, EventArgs e)
         {
             Options form = new Options();
@@ -171,7 +177,8 @@ namespace Zarodoga
             form.ShowDialog();
         }
 
-        private void vip_btn_Click(object sender, EventArgs e)
+        // Vip gomb megnyomása
+        private void Vip_btn_Click(object sender, EventArgs e)
         {
             Login form = null;
             foreach (var item in Application.OpenForms)

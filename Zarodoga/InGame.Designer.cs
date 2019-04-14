@@ -31,6 +31,7 @@ namespace Zarodoga
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InGame));
             this.Player = new System.Windows.Forms.PictureBox();
             this.Enemy = new System.Windows.Forms.PictureBox();
             this.Player_hp = new System.Windows.Forms.ProgressBar();
@@ -48,6 +49,7 @@ namespace Zarodoga
             this.Winner_Third = new System.Windows.Forms.PictureBox();
             this.Winner_Second = new System.Windows.Forms.PictureBox();
             this.Gyors_btn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Enemy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player_first_element)).BeginInit();
@@ -59,10 +61,13 @@ namespace Zarodoga
             ((System.ComponentModel.ISupportInitialize)(this.Winner_First)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Winner_Third)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Winner_Second)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Player
             // 
+            this.Player.BackgroundImage = global::Zarodoga.Properties.Resources.Hero;
+            this.Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Player.Location = new System.Drawing.Point(169, 541);
             this.Player.Name = "Player";
             this.Player.Size = new System.Drawing.Size(100, 115);
@@ -181,10 +186,14 @@ namespace Zarodoga
             // 
             // info_label
             // 
-            this.info_label.Location = new System.Drawing.Point(288, 541);
+            this.info_label.BackColor = System.Drawing.Color.Transparent;
+            this.info_label.Image = ((System.Drawing.Image)(resources.GetObject("info_label.Image")));
+            this.info_label.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.info_label.Location = new System.Drawing.Point(291, 542);
             this.info_label.Name = "info_label";
             this.info_label.Size = new System.Drawing.Size(100, 115);
             this.info_label.TabIndex = 5;
+            this.info_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Winner_First
             // 
@@ -229,6 +238,16 @@ namespace Zarodoga
             this.Gyors_btn.UseVisualStyleBackColor = true;
             this.Gyors_btn.Click += new System.EventHandler(this.Gyors_btn_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(291, 542);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 115);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // InGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,6 +269,7 @@ namespace Zarodoga
             this.Controls.Add(this.Enemy_hp);
             this.Controls.Add(this.Player_hp);
             this.Controls.Add(this.Enemy);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Player);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -268,6 +288,7 @@ namespace Zarodoga
             ((System.ComponentModel.ISupportInitialize)(this.Winner_First)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Winner_Third)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Winner_Second)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -291,5 +312,6 @@ namespace Zarodoga
         private System.Windows.Forms.PictureBox Winner_Third;
         private System.Windows.Forms.PictureBox Winner_Second;
         private System.Windows.Forms.Button Gyors_btn;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -153,6 +153,16 @@ namespace Zarodoga.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Flare {
+            get {
+                object obj = ResourceManager.GetObject("Flare", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap forestspirit {
             get {
                 object obj = ResourceManager.GetObject("forestspirit", resourceCulture);
@@ -176,6 +186,16 @@ namespace Zarodoga.Properties {
         internal static System.Drawing.Bitmap Frost_spell_res {
             get {
                 object obj = ResourceManager.GetObject("Frost_spell_res", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hero {
+            get {
+                object obj = ResourceManager.GetObject("Hero", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,6 +253,16 @@ namespace Zarodoga.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Login_back {
+            get {
+                object obj = ResourceManager.GetObject("Login_back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Ooze {
             get {
                 object obj = ResourceManager.GetObject("Ooze", resourceCulture);
@@ -243,9 +273,39 @@ namespace Zarodoga.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Plant {
+            get {
+                object obj = ResourceManager.GetObject("Plant", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Scrool {
+            get {
+                object obj = ResourceManager.GetObject("Scrool", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap shroom {
             get {
                 object obj = ResourceManager.GetObject("shroom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tide {
+            get {
+                object obj = ResourceManager.GetObject("Tide", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
