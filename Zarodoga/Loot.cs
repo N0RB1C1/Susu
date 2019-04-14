@@ -48,16 +48,17 @@ namespace Zarodoga
             }
             Adatbazis.Update_Arany(Adatbazis.Select_Player_Id(form.User_box.Text), arany);
             Adatbazis.Update_Tapasztalat(Adatbazis.Select_Player_Id(form.User_box.Text), tapasztalatipont);
-            Basic form2 = null;
+            InGame form2 = null;
             foreach (var item in Application.OpenForms)
             {
-                if (item.GetType().ToString() == "Zarodoga.Basic")
+                if (item.GetType().ToString() == "Zarodoga.InGame")
                 {
-                    form2 = (Basic)item;
+                    form2= (InGame)item;
                 }
-            }         
-            form2.Show();
+            }
+            form2.Close();
         }
+        
 
         private void Form_closing(object sender, EventArgs e)
         {

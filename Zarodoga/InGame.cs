@@ -36,10 +36,17 @@ namespace Zarodoga
 
         }
 
-        //Alkalamzás bezárása
-        private void Form_Closing(object sender, FormClosingEventArgs e)
+        private void Form_Closing(object sender, EventArgs e)
         {
-            Application.Exit();
+            Basic form2 = null;
+            foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType().ToString() == "Zarodoga.Basic")
+                {
+                    form2 = (Basic)item;
+                }
+            }
+            form2.Show();
         }
 
         // Első elem választása
@@ -287,11 +294,6 @@ namespace Zarodoga
         // Enemy auto generate
         private void InGame_Load(object sender, EventArgs e)
         {
-            info_label.Text = (
-                "Az ellenség élete: " + "\n" + Enemy_hp.Value
-                + "\nA játékos élete: " + "\n" + Player_hp.Value
-                + "\n Az ellenség neve: " + ellen.Name  
-            );
             Login form = null;
             foreach (var item in Application.OpenForms)
             {
@@ -314,6 +316,11 @@ namespace Zarodoga
             Bitmap kep = (Bitmap)resManager.GetObject(ellen.Name);
             Enemy.BackgroundImage = kep;
             Enemy.BackgroundImageLayout = ImageLayout.Stretch;
+            info_label.Text = (
+                "Az ellenség élete: " + "\n" + Enemy_hp.Value
+                + "\nA játékos élete: " + "\n" + Player_hp.Value
+                + "\n Az ellenség neve: " + ellen.Name
+                );
         }
 
         // Kör kezdete
@@ -929,25 +936,27 @@ namespace Zarodoga
         // Gyorsítás
         private void Gyors_btn_Click(object sender, EventArgs e)
         {
-            if (Hp_Check() == true)
+            if (Enemy_hp.Value >= 40 && Player_hp.Value >= 40)
             {
-                Winner_First_Click(sender, e);
-            }
-            else Loot_Form();
+                if (Hp_Check() == true)
+                {
+                    Winner_First_Click(sender, e);
+                }
 
-            if (Hp_Check() == true)
+                if (Hp_Check() == true)
+                {
+                    Winner_Second_Click(sender, e);
+                }
+
+                if (Hp_Check() == true)
+                {
+                    Winner_Third_Click(sender, e);
+                }
+            }
+            else
             {
-                Winner_Second_Click(sender, e); ;
+                Gyors_btn.Enabled = false;
             }
-            else Loot_Form();
-
-            if (Hp_Check() == true)
-            {
-                Winner_Third_Click(sender, e);
-            }
-            Loot_Form();
-
-            Gyors_btn.Enabled = false;
         }
 
 

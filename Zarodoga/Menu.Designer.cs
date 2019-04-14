@@ -70,6 +70,7 @@
             this.Start_Button.TabIndex = 0;
             this.Start_Button.Text = "Start";
             this.Start_Button.UseVisualStyleBackColor = true;
+            this.Start_Button.VisibleChanged += new System.EventHandler(this.Start_Button_VisibleChanged);
             this.Start_Button.Click += new System.EventHandler(this.Start_Button_Click);
             // 
             // Player_infolbl

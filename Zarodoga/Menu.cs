@@ -167,6 +167,9 @@ namespace Zarodoga
                 }
             }
             Adatbazis.Update_Arany(Adatbazis.Select_Player_Id(form.User_box.Text), 100);
+            Start_Button.Enabled = true;
+            Arany_button.Enabled = false;
+            Aranylbl.Text = "Arany: " + Adatbazis.Select_Player_Arany(Adatbazis.Select_Player_Id(form.User_box.Text));
         }
 
         // Options ablak megnyitása
@@ -191,6 +194,43 @@ namespace Zarodoga
             Adatbazis.Update_Jogosultsag(Adatbazis.Select_Player_Id(form.User_box.Text));
             MessageBox.Show("Köszönjük, hogy támogat minket!");
             vip_btn.Enabled = false;
+        }
+
+        // visual change
+        private void Start_Button_VisibleChanged(object sender, EventArgs e)
+        {
+            Player_infolbl.Text = "Üdvözöllek: ";
+            Aranylbl.Text = "Arany: ";
+            Tapasztalati_szintlbl.Text = "Tapasztalati szint: ";
+            Login form = null;
+            foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType().ToString() == "Zarodoga.Login")
+                {
+                    form = (Login)item;
+                }
+            }
+            int id = Adatbazis.Select_Player_Id(form.User_box.Text);
+            p = new Player(form.User_box.Text,
+                Adatbazis.Select_Player_Id(form.User_box.Text),
+                Adatbazis.Select_Player_Arany(id),
+                Adatbazis.Select_Player_Tapasztalati_Pont(id),
+                Adatbazis.Select_Player_Jogosultsag(id)
+                );
+            if (p.jogosultsag > 0)
+            {
+                vip_btn.Enabled = false;
+            }
+            Player_infolbl.Text += " " + p.username;
+            Aranylbl.Text += " " + p.arany;
+            Tapasztalati_szintlbl.Text += " " + Aktualisszint();
+            Szintmaximum();
+            if (p.arany == 0 || p.arany < 0)
+            {
+                Arany_button.Enabled = true;
+                Arany_button.Visible = true;
+                Start_Button.Enabled = false;
+            }
         }
     }
 }

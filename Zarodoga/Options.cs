@@ -100,9 +100,16 @@ namespace Zarodoga
 
         private void Vissza_btn_Click(object sender, EventArgs e)
         {
-            Basic form = new Basic();
-            this.Hide();
-            form.ShowDialog();
+            Basic form = null;
+            foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType().ToString() == "Zarodoga.Basic")
+                {
+                    form = (Basic)item;
+                }
+            }
+            this.Close();
+            form.Show();
         }
     }
 }
