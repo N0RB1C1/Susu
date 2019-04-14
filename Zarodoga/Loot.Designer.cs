@@ -57,7 +57,7 @@
             this.Pick_up_loot.TabIndex = 2;
             this.Pick_up_loot.Text = "Rendben ";
             this.Pick_up_loot.UseVisualStyleBackColor = true;
-            this.Pick_up_loot.Click += new System.EventHandler(this.Pick_up_loot_Click);
+            this.Pick_up_loot.Click += new System.EventHandler(this.Form_closing);
             // 
             // Loot
             // 

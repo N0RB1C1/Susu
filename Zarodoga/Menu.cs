@@ -112,7 +112,7 @@ namespace Zarodoga
                 Szintbr.Maximum = szintek[3];
                 Szintbr.Value = (p.tapasztalat - 800);
             }
-            else if (p.tapasztalat >= 1800)
+            else if (p.tapasztalat >= 1800 && p.tapasztalat < 6800)
             {
                 Szintbr.Maximum = szintek[4];
                 Szintbr.Value = (p.tapasztalat - 1800);
